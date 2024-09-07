@@ -1,0 +1,13 @@
+from flask import Flask
+
+# Create a Flask instance
+app = Flask(__name__)
+
+# Define a route for the root URL
+@app.route('/')
+def index():
+    return "WELCOME TO SHDL MMU LIBRARY!"
+
+# Run the application
+if __name__ == '__main__':
+    app.run(debug=True)
