@@ -1,10 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Student Dashboard - SHDL MMU Library</title>
+   
 </head>
 <body>
-    <h1>Welcome to the Dashboard, {{ username }}!</h1>
-    <p>This is the main page of the library management system.</p>
+
+<nav>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a href="#view-books">View Books</a>
+    <a href="#borrowed-books">Borrowed Books</a>
+    <a href="#request-books">Request Book</a>
+    <a href="#profile">Profile</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+
+<div class="container">
+    <h1>Welcome, { username }</h1>
+    <p>Explore the features available to manage your library account.</p>
+
+    <div class="features">
+        <div class="feature-box" id="view-books">
+            <h2>View Available Books</h2>
+            <p>Search and browse through the library's collection of books.</p>
+            <a href="#view-books">View Books</a>
+        </div>
+
+        <div class="feature-box" id="borrowed-books">
+            <h2>Your Borrowed Books</h2>
+            <p>See the list of books you've borrowed and their due dates.</p>
+            <a href="#borrowed-books">Check Borrowed Books</a>
+        </div>
+
+        <div class="feature-box" id="request-books">
+            <h2>Request New Book</h2>
+            <p>Need a book that's not available? Request it here.</p>
+            <a href="#request-books">Request a Book</a>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-box" id="profile">
+            <h2>Your Profile</h2>
+            <p>View and update your personal information, such as contact details and student ID.</p>
+            <a href="#profile">View Profile</a>
+        </div>
+
+        <div class="feature-box">
+            <h2>Fines & Penalties</h2>
+            <p>Check if you have any pending fines for overdue books.</p>
+            <a href="#fines">View Fines</a>
+        </div>
+
+        <div class="feature-box">
+            <h2>Library Notifications</h2>
+            <p>Get updates on new books and important announcements.</p>
+            <a href="#notifications">View Notifications</a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
