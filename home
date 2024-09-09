@@ -3,6 +3,12 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a real secret key for session management
 
+# Example in-memory users database for login validation (replace with real database)
+users = {
+    "student1": {"password": "password1", "student_id": "001"},
+    "student2": {"password": "password2", "student_id": "002"},
+}
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -15,8 +21,8 @@ def login():
         student_id = request.form.get('student_id')
         remember = 'remember' in request.form
 
-        # Example validation logic (replace with real validation)
-        if username == "student1" and password == "password1" and student_id == "001":
+        # Check if the user exists and the credentials are valid
+        if username in users and users[username]['password'] == password and users[username]['student_id'] == student_id:
             flash('Login successful!', 'success')
             return redirect(url_for('home'))
         else:
