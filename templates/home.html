@@ -2,24 +2,24 @@
 <html>
 <head>
     <title>MINI-IT</title>
-    <link rel="icon" href="library.png">
+    <link rel="icon" href="{{ url_for('static', filename='library.png') }}">
 </head>
 <body>
     
     <table width="100%">
         <tr>
             <td align="left">
-                <img src="shdl.png" alt="SHDL MMU" width="150" height="100">
+                <img src="{{ url_for('static', filename='shdl.png') }}" alt="SHDL MMU" width="150" height="100">
             </td>
             <td align="center">
                 <h1>SHDL MMU LIBRARY</h1>
             </td>
             <td align="right">
-                <a href="/">HOME</a> | 
+                <a href="{{ url_for('home') }}">HOME</a> | 
                 <a href="#books">BOOKS</a> | 
                 <a href="#other">OTHER</a> |
-                <a href="/login">LOGIN</a> |
-                <a href="/register">REGISTER</a>
+                <a href="{{ url_for('login') }}">LOGIN</a>|
+                <a href="#register">REGISTER</a> |
             </td>
         </tr>
     </table>
@@ -29,7 +29,7 @@
     <p><b>This project aims at developing the Library Management System where a user can login either as a student or a librarian. A student can view all the books or available books, sort the list of books, search a book using any parameters. A librarian can sort as well as search like a student, and also has the ability to Issue a book, Return a book or Add a new book to the list. Here adding of books is made easier with the help of Google Books API. The librarian can create student logins and issue library cards to them. A camera module is integrated to capture student pictures for the library card. There is a front-end (HomePage) where students can see all the books available in the library and decide whether to visit. A module is also available for logged-in students to request the librarian for books they need. The project includes SMS & email modules for reminders and a fines management page for the librarian.</b></p>
     
     <center>
-        <img src="lib1.jpg" alt="library" class="responsive" style="width:1000px; height:auto;">
+        <img src="{{ url_for('static', filename='lib1.jpg') }}" alt="library" class="responsive" style="width:1000px; height:auto;">
     </center>
     <br>
     
@@ -41,23 +41,23 @@
     <table align="center" cellpadding="20">
         <tr>
             <td align="center">
-                <img src="book1.jpg" alt="COMPUTER FUNDAMENTAL" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book1.jpg') }}" alt="COMPUTER FUNDAMENTAL" width="150" height="200"><br>
                 <b>COMPUTER FUNDAMENTAL</b><br>
             </td>
             <td align="center">
-                <img src="book2.jpg" alt="INRODUCTION TO COMPUTERS" width="150" height="200"><br>
-                <b>INRODUCTION TO COMPUTERS</b><br>
+                <img src="{{ url_for('static', filename='book2.jpg') }}" alt="INTRODUCTION TO COMPUTERS" width="150" height="200"><br>
+                <b>INTRODUCTION TO COMPUTERS</b><br>
             </td>
             <td align="center">
-                <img src="book3.jpg" alt="COMPUTER ARCHITECTURE" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book3.jpg') }}" alt="COMPUTER ARCHITECTURE" width="150" height="200"><br>
                 <b>COMPUTER ARCHITECTURE</b><br>
             </td>
             <td align="center">
-                <img src="book4.jpg" alt="COMPUTER HARDWARE" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book4.jpg') }}" alt="COMPUTER HARDWARE" width="150" height="200"><br>
                 <b>COMPUTER HARDWARE</b><br>
             </td>
             <td align="center">
-                <img src="book5.jpg" alt="COMPUTER BASICS" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book5.jpg') }}" alt="COMPUTER BASICS" width="150" height="200"><br>
                 <b>COMPUTER BASICS</b><br>
             </td>
         </tr>
@@ -67,23 +67,23 @@
     <table align="center" cellpadding="20">
         <tr>
             <td align="center">
-                <img src="book6.jpg" alt="ELECTRONIC ENGINEERING" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book6.jpg') }}" alt="ELECTRONIC ENGINEERING" width="150" height="200"><br>
                 <b>ELECTRONIC ENGINEERING</b><br>
             </td>
             <td align="center">
-                <img src="book7.jpg" alt="MECHANICAL ENGINEERING" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book7.jpg') }}" alt="MECHANICAL ENGINEERING" width="150" height="200"><br>
                 <b>MECHANICAL ENGINEERING</b><br>
             </td>
             <td align="center">
-                <img src="book8.jpg" alt="ELECTRICAL ENGINEERING" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book8.jpg') }}" alt="ELECTRICAL ENGINEERING" width="150" height="200"><br>
                 <b>ELECTRICAL ENGINEERING</b><br>
             </td>
             <td align="center">
-                <img src="book9.jpg" alt="AEROSPACE ENGINEERING" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book9.jpg') }}" alt="AEROSPACE ENGINEERING" width="150" height="200"><br>
                 <b>AEROSPACE ENGINEERING</b><br>
             </td>
             <td align="center">
-                <img src="book10.jpg" alt="CIVIL ENGINEERING" width="150" height="200"><br>
+                <img src="{{ url_for('static', filename='book10.jpg') }}" alt="CIVIL ENGINEERING" width="150" height="200"><br>
                 <b>CIVIL ENGINEERING</b><br>
             </td>
         </tr>
@@ -94,18 +94,21 @@
     <h2>GET IN TOUCH WITH US</h2>
     
     <br>
-
+    
     <table width="100%">
         <tr>
+        
             <td align="left" width="50%">
                 <h2>SHDL MMU LIBRARY</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15938.444833872678!2d101.6416652!3d2.9275665!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb6e88b8bd7b5%3A0xaa996a4c4300b49a!2sSiti%20Hasmah%20Digital%20Library%20Multimedia%20University!5e0!3m2!1sen!2smy!4v1725847530248!5m2!1sen!2smy" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15938.444833872678!2d101.6416652!3d2.9275665!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb6e88b8bd7b5%3A0xaa996a4c4300b49a!2sSiti%20Hasmah%20Digital%20Library%20Multimedia%20University!5e0!3m2!1sen!2smy!4v1725878119022!5m2!1sen!2smy" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </td>
+
+            
             <td align="left" width="50%">
                 <h2>About us</h2>
                 <p>
-                    We proudly serve MMU communities free services in term of educating library users whether academician, student, staff, or member of the public, on how to use the library and its services. The main purpose is to build user’s skills in accessing a variety of library resources available in the library and to guide users on how to use the resources and services provided by the library. 
-                </p>
+                    We proudly serve MMU communities free services in term of educating library users...</p>
                 <p>
                     Address: Jalan Multimedia, 63000 Cyberjaya, Selangor<br>
                     Phone: 03-8312 5852<br>

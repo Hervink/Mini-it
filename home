@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -6,8 +6,18 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        # Handle form submission here
+        username = request.form.get('username')
+        password = request.form.get('password')
+        student_id = request.form.get('student_id')
+        remember = 'remember' in request.form
+        
+        # For simplicity, just redirect to home after form submission
+        return redirect(url_for('home'))
+    
     return render_template('login.html')
 
 if __name__ == '__main__':
