@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Replace with a real secret key for session management
 
 @app.route('/')
 def home():
@@ -9,13 +10,18 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Handle form submission here
         username = request.form.get('username')
         password = request.form.get('password')
         student_id = request.form.get('student_id')
         remember = 'remember' in request.form
-        # Add logic to handle login (e.g., check credentials, etc.)
-        return redirect(url_for('home'))
+
+        # Example validation logic (replace with real validation)
+        if username == "student1" and password == "password1" and student_id == "001":
+            flash('Login successful!', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Invalid username, password, or student ID', 'danger')
+
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -28,8 +34,11 @@ def register():
         phone = request.form['phone']
         faculty = request.form['faculty']
         gender = request.form['gender']
-        
+
+        # Example registration logic (replace with real logic)
+        flash('Registration successful!', 'success')
         return redirect(url_for('home'))
+
     return render_template('register.html')
 
 if __name__ == '__main__':
