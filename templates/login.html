@@ -2,31 +2,10 @@
 <html>
 <head>
     <title>LOGIN</title>
-    <script>
-        function handleLogin(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get form values
-            const username = document.querySelector('input[name="username"]').value;
-            const password = document.querySelector('input[name="password"]').value;
-            const studentId = document.querySelector('input[name="student_id"]').value;
-
-            // Basic client-side validation (not secure, just for demonstration)
-            if (username === "student1" && password === "password1" && studentId === "001") {
-                // Redirect to home page
-                window.location.href = "dashboard.html";
-            } else {
-                // Display an error message
-                alert("Invalid username, password, or student ID");
-            }
-        }
-    </script>
 </head>
 <body>
-    <center>
-        <h2>LOGIN</h2>
-    </center>
-    <form onsubmit="handleLogin(event)">
+    <center><h2>LOGIN</h2></center>
+    <form method="POST" action="{{ url_for('login') }}">
         <table align="center">
             <tr>
                 <td>Username:</td>

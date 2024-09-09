@@ -1,12 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a real secret key for session management
+app.secret_key = 'your_secret_key'
 
-# Example in-memory users database for login validation (replace with real database)
+# Dummy credentials for example
 users = {
-    "student1": {"password": "password1", "student_id": "001"},
-    "student2": {"password": "password2", "student_id": "002"},
+    'student1': {'password': 'password1', 'student_id': '001'}
 }
 
 @app.route('/')
@@ -16,45 +15,30 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        student_id = request.form.get('student_id')
-        remember = 'remember' in request.form
-
-        # Check if the user exists and the credentials are valid
-        if username in users and users[username]['password'] == password and users[username]['student_id'] == student_id:
-            session['username'] = username  # Store username in session
-            flash('Login successful!', 'success')
-            return redirect(url_for('dashboard.html'))
-        else:
-            flash('Invalid username, password, or student ID', 'danger')
-
-    return render_template('login.html')
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
+        username = request.form['username']
         password = request.form['password']
         student_id = request.form['student_id']
-        phone = request.form['phone']
-        faculty = request.form['faculty']
-        gender = request.form['gender']
 
-        # Example registration logic (replace with real logic)
-        flash('Registration successful!', 'success')
-        return redirect(url_for('home'))
-
-    return render_template('register.html')
+        # Verify user credentials
+        if username in users and users[username]['password'] == password and users[username]['student_id'] == student_id:
+            session['username'] = username
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Invalid credentials, please try again.')
+            return redirect(url_for('login'))
+    return render_template('login.html')
 
 @app.route('/dashboard')
 def dashboard():
     if 'username' in session:
-        return render_template('dashboard.html')
+        return render_template('dashboard.html', username=session['username'])
     else:
-        flash('You need to log in first', 'warning')
+        flash('You are not logged in!')
         return redirect(url_for('login'))
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
