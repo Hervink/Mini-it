@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+<center>
+    <h2>Register</h2>
+</center>
+    <form action="/register" method="POST">
+        <table align="center">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" placeholder="Enter Name" required></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email" placeholder="Enter Email" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" placeholder="Enter Password" required></td>
+            </tr>
+            <tr>
+                <td>Student ID:</td>
+                <td><input type="text" name="student_id" placeholder="Enter Student ID" required></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td><input type="tel" name="phone" placeholder="Enter Phone Number" required></td>
+            </tr>
+            <tr>
+                <td>Faculty:</td>
+                <td>
+                    <select name="faculty" required>
+                        <option value="" disabled selected>Select Faculty</option>
+                        <option value="FCI">FCI</option>
+                        <option value="FOE">FOE</option>
+                        <option value="FOM">FOM</option>
+                        <option value="FCA">FCA</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Male</label>
+                    <br>
+                    <input type="radio" id="female" name="gender" value="female" required>
+                    <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
