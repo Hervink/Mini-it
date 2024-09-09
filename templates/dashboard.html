@@ -2,48 +2,6 @@
 <html>
 <head>
     <title>Student Dashboard - SHDL MMU Library</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .container {
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .features {
-            display: flex;
-            justify-content: space-between;
-        }
-        .feature-box {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            width: 30%;
-            text-align: center;
-        }
-        .feature-box:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
 </head>
 <body>
 
@@ -53,11 +11,11 @@
     <a href="#borrowed-books">Borrowed Books</a>
     <a href="#request-books">Request Book</a>
     <a href="#profile">Profile</a>
+    <a href="#notifications">Notifications</a>
 </nav>
 
 <div class="container">
-    <h1>Welcome {{ username }}</h1>
-    
+    <h1>Welcome, {{ username }}</h1>
 
     <div class="features">
         <div class="feature-box" id="view-books">
@@ -92,11 +50,13 @@
             <a href="#fines" style="text-decoration: none;">View Fines</a>
         </div>
 
-        <div class="feature-box">
-            <h2>Library Notifications</h2>
-            <p>Get updates on new books and important announcements.</p>
+        <div class="feature-box" id="notifications">
+            <h2>Notifications & Reminders</h2>
+            <p>See notifications and reminders for due dates and important updates.</p>
             <a href="#notifications" style="text-decoration: none;">View Notifications</a>
         </div>
+    </div>
+
     </div>
 </div>
 
