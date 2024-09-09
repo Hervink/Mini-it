@@ -1,84 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Library Management System</title>
-    <style>
-        html, body {
-            height: 100%; /* Ensure the body takes up the full height of the viewport */
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            background-image: url('lib_pic.jpg'); /* Path to your background image */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .navbar {
-            background-color: rgba(51, 51, 51, 0.8); /* Added opacity for better readability */
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 14px 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .navbar a:hover {
-            background-color: #575757;
-        }
-        .container {
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Added opacity for better readability */
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 1200px;
-        }
-        .header {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .footer {
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(51, 51, 51, 0.8); /* Added opacity for better readability */
-            color: #fff;
-        }
-        img {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%; /* Ensure the image doesn't overflow its container */
-            height: auto; /* Maintain aspect ratio */
-        }
-    </style>
+    <title>MINI-IT</title>
+    <link rel="icon" href="library.png">
 </head>
 <body>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/books">Books</a>
-        <a href="/students">Students</a>
-        <a href="/faculty">Faculty</a>
-        <a href="/issues">Issues</a>
-        <a href="/returns">Returns</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-    </div>
-    <div class="container">
-        <div class="header">
-            <h1>WELCOME TO THE SHDL MMU LIBRARY</h1>
-            <p>MMU IS YOU</p>
-       
-   
+    
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <img src="shdl.png" alt="SHDL MMU" width="150" height="100">
+            </td>
+            <td align="center">
+                <h1>SHDL MMU LIBRARY</h1>
+            </td>
+            <td align="right">
+                <a href="#home">Home</a> | 
+                <a href="#books">Books</a> | 
+                <a href="#other">Other</a>
+            </td>
+        </tr>
+    </table>
+    
+    <hr>
+    
+    <p><b>This project aims at developing the Library Management System where a user can login either as a student or a librarian. A student can view all the books or available books, sort the list of books, search a book using any parameters. A librarian can sort as well as search like a student, and also has the ability to Issue a book, Return a book or Add a new book to the list. Here adding of books is made easier with the help of Google Books API. The librarian can create student logins and issue library cards to them. A camera module is integrated to capture student pictures for the library card. There is a front-end (HomePage) where students can see all the books available in the library and decide whether to visit. A module is also available for logged-in students to request the librarian for books they need. The project includes SMS & email modules for reminders and a fines management page for the librarian.</b></p>
+    
+    <center>
+        <img src="lib1.jpg" alt="library" class="responsive" style="width:1000px; height:auto;">
+    </center>
+    <br>
+    
+    <center>
+        <h2>OUR LIBRARY BOOKS</h2>
+    </center>
+    
+    <h3>COMPUTER</h3>
+    <table align="center" cellpadding="20">
+        <tr>
+            <!-- First Book -->
+            <td align="center">
+                <img src="book1.jpg" alt="COMPUTER FUNDAMENTAL" width="150" height="200"><br>
+                <b>COMPUTER FUNDAMENTAL</b><br>
+            </td>
+            <td align="center">
+                <img src="book2.jpg" alt="COMPUTER" width="150" height="200"><br>
+                <b>INRODUCTION TO COMPUTERS</b><br>
+            </td>
+            <td align="center">
+                <img src="book3.jpg" alt="COMPUTER" width="150" height="200"><br>
+                <b>COMPUTER ARCHITECTURE</b><br>
+            </td>
+            <td align="center">
+                <img src="book4.jpg" alt="COMPUTER" width="150" height="200"><br>
+                <b>COMPUTER HARDWARE</b><br>
+            </td>
+            <td align="center">
+                <img src="book5.jpg" alt="COMPUTER" width="150" height="200"><br>
+                <b>COMPUTER BASICS</b><br>
+            </td>
+        </tr>
+    </table>
+
+    <h3>ENGINEERING</h3>
+    <table align="center" cellpadding="20">
+        <tr>
+            <!-- First Engineering Book -->
+            <td align="center">
+                <img src="book6.jpg" alt="EE" width="150" height="200"><br>
+                <b>ELECTRONIC ENGINEERINGL</b><br>
+            </td>
+            <td align="center">
+                <img src="book7.jpg" alt="ME" width="150" height="200"><br>
+                <b>MECHANICAL ENGINEERING</b><br>
+            </td>
+            <td align="center">
+                <img src="book8.jpg" alt="EE" width="150" height="200"><br>
+                <b>ELECTRICAL ENGINEERING</b><br>
+            </td>
+            <td align="center">
+                <img src="book9.jpg" alt="AE" width="150" height="200"><br>
+                <b>AEROSPACE ENGINEERING </b><br>
+            </td>
+            <td align="center">
+                <img src="book10.jpg" alt="CE" width="150" height="200"><br>
+                <b>CIVIL ENGINEERING</b><br>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <center>
+    <h2>GET IN TOUCH WITH US</h2>
+    </center>
+    <br>
+
+    
+    <table width="100%">
+        <tr>
+        
+            <td align="left" width="50%">
+                <h2>SHDL MMU LIBRARY</h2>
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15938.444833872678!2d101.6416652!3d2.9275665!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb6e88b8bd7b5%3A0xaa996a4c4300b49a!2sSiti%20Hasmah%20Digital%20Library%20Multimedia%20University!5e0!3m2!1sen!2smy!4v1725847530248!5m2!1sen!2smy" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+                
+            </td>
+
+            
+            <td align="left" width="50%">
+                <h2>About us</h2>
+                <p>
+                    We proudly serve MMU communities free services in term of educating library users whether academician, student, staff, or member of the public, on how to use the library and its services. The main purpose is to build user’s skills in accessing a variety of library resources available in the library and to guide users on how to use the resources and services provided by the library. 
+                </p>
+                <p>
+                    Address: Jalan Multimedia, 63000 Cyberjaya, Selangor<br>
+                    Phone: 03-8312 5852<br>
+                    E-mail: shdlmmu@outlook.com
+                </p>
+
+                <h3>Contact Us</h3>
+                <form>
+                    <table>
+                        <tr>
+                            <td>Your Name:</td>
+                            <td><input type="text" name="name" placeholder="Enter Name"></td>
+                        </tr>
+                        <tr>
+                            <td>Email Address:</td>
+                            <td><input type="email" name="email" placeholder="Enter Email"></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile No.:</td>
+                            <td><input type="text" name="mobile" placeholder="Enter Mobile"></td>
+                        </tr>
+                        <tr>
+                            <td>Message:</td>
+                            <td><textarea name="message" placeholder="Enter Your Message"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Send Message"></td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
