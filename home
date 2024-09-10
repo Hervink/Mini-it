@@ -34,8 +34,8 @@ def login():
             admin_id = request.form['admin_id']
             # Verify admin credentials
             if username in users and users[username]['password'] == password and users[username].get('admin_id') == admin_id:
-                session['username'] = username
-                return redirect(url_for('admin_dashboard'))
+                session['username'] = username  # Storing username in session
+                return redirect(url_for('admin_dashboard'))  # Redirect to admin dashboard
             else:
                 flash('Invalid admin credentials, please try again.')
                 return redirect(url_for('login'))
@@ -53,7 +53,8 @@ def dashboard():
 @app.route('/admin_dashboard')
 def admin_dashboard():
     if 'username' in session:
-        return render_template('admin_dashboard.html', username=session['username'])
+        username = session['username']  # Retrieve the logged-in admin's username
+        return render_template('admin_dashboard.html', username=username)  # Pass username to template
     else:
         flash('You are not logged in!')
         return redirect(url_for('login'))
