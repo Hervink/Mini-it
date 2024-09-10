@@ -2,17 +2,150 @@
 <html>
 <head>
     <title>Admin Dashboard - SHDL MMU Library</title>
-    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #333;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #04AA6D;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 20px; /* Added margin-top to account for fixed navbar */
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .feature-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-box h2 {
+            font-size: 24px;
+            color: #070707;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .feature-box a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .feature-box a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-    <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
-    <a href="#manage-books">Manage Books</a>
-    <a href="#student-profiles">Student Profiles</a>
-    <a href="#fines">Fines</a>
-    <a href="#notifications">Notifications</a>
-    <a href="#add-books">Add Books</a>
+    <ul>
+        <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+        <li><a href="#manage-books">Manage Books</a></li>
+        <li><a href="#student-profiles">Student Profiles</a></li>
+        <li><a href="#fines">Fines</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#add-books">Add Books</a></li>
+    </ul>
 </nav>
 
 <div class="container">
@@ -22,19 +155,19 @@
         <div class="feature-box" id="manage-books">
             <h2>Manage Books</h2>
             <p>View, add, edit, and remove books from the library collection.</p>
-            <a href="#manage-books" style="text-decoration: none;">Manage Books</a>
+            <a href="#manage-books">Manage Books</a>
         </div>
 
         <div class="feature-box" id="student-profiles">
             <h2>Student Profiles</h2>
             <p>View and manage student profiles, including borrowed books and history.</p>
-            <a href="#student-profiles" style="text-decoration: none;">Manage Profiles</a>
+            <a href="#student-profiles">Manage Profiles</a>
         </div>
 
         <div class="feature-box" id="fines">
             <h2>Manage Fines</h2>
             <p>Track and manage fines for overdue books or other violations.</p>
-            <a href="#fines" style="text-decoration: none;">Manage Fines</a>
+            <a href="#fines">Manage Fines</a>
         </div>
     </div>
 
@@ -42,19 +175,19 @@
         <div class="feature-box" id="notifications">
             <h2>Send Notifications</h2>
             <p>Send notifications to students for due dates, fines, and important updates.</p>
-            <a href="#notifications" style="text-decoration: none;">Send Notifications</a>
+            <a href="#notifications">Send Notifications</a>
         </div>
 
         <div class="feature-box" id="add-books">
             <h2>Add New Books</h2>
             <p>Add new books to the library's collection and update inventory.</p>
-            <a href="#add-books" style="text-decoration: none;">Add Books</a>
+            <a href="#add-books">Add Books</a>
         </div>
 
         <div class="feature-box" id="reports">
             <h2>View Reports</h2>
             <p>Generate and view reports on book borrowings, fines, and more.</p>
-            <a href="#reports" style="text-decoration: none;">View Reports</a>
+            <a href="#reports">View Reports</a>
         </div>
     </div>
 

@@ -3,6 +3,134 @@
 <head>
     <title>MINI-IT</title>
     <link rel="icon" href="{{ url_for('static', filename='library.png') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f0f0f0, #b3d9ff);
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        h1, h2, h3 {
+            color: #003366;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #003366;
+            margin: 20px 0;
+        }
+
+        a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            border-radius: 8px;
+        }
+
+        p {
+            font-size: 1.1em;
+            text-align: justify;
+            line-height: 1.6;
+            margin: 0 20px;
+        }
+
+        form {
+            padding: 20px;
+            background-color: #e6f2ff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: auto;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004080;
+        }
+
+        .table-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #003366;
+        }
+
+        .book-table img {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .book-table img:hover {
+            transform: scale(1.05);
+        }
+
+        iframe {
+            border-radius: 10px;
+        }
+
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+
+        .responsive {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .contact-form table {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     

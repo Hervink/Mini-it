@@ -4,6 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            max-width: 400px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        input[type="text"], 
+        input[type="password"], 
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .optional {
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,30 +75,21 @@
             <option value="student">Student</option>
             <option value="admin">Admin</option>
         </select>
-        <br><br>
 
         <label>Username:</label>
         <input type="text" name="username" placeholder="Enter Username" required>
-        <br><br>
 
         <label>Password:</label>
         <input type="password" name="password" placeholder="Enter Password" required>
-        <br><br>
 
-        <!-- Student ID field -->
-        <label>Student ID (for students only):</label>
+        <label>Student ID <span class="optional">(for students only)</span>:</label>
         <input type="text" name="student_id" placeholder="Enter Student ID">
-        <br><br>
 
-        <!-- Admin ID field -->
-        <label>Admin ID (for admins only):</label>
+        <label>Admin ID <span class="optional">(for admins only)</span>:</label>
         <input type="text" name="admin_id" placeholder="Enter Admin ID">
-        <br><br>
 
         <button type="submit">Log In</button>
     </form>
-
-   
 
 </body>
 </html>
