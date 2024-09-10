@@ -5,8 +5,8 @@ app.secret_key = 'your_secret_key'
 
 # Dummy credentials for example
 users = {
-    'hervin': {'password': 'password', 'student_id': '1221103173'},
-    'admin': {'password': 'password1', 'admin_id': 'admin1'}
+    'hervin': {'password': 'password', 'student_id': '1221103173', 'user_type': 'student'},
+    'admin': {'password': 'password1', 'admin_id': 'admin1', 'user_type': 'admin'}
 }
 
 @app.route('/')
@@ -25,6 +25,7 @@ def login():
             # Verify student credentials
             if username in users and users[username]['password'] == password and users[username].get('student_id') == student_id:
                 session['username'] = username
+                session['user_type'] = 'student'
                 return redirect(url_for('dashboard'))
             else:
                 flash('Invalid student credentials, please try again.')
@@ -34,8 +35,9 @@ def login():
             admin_id = request.form['admin_id']
             # Verify admin credentials
             if username in users and users[username]['password'] == password and users[username].get('admin_id') == admin_id:
-                session['username'] = username  # Storing username in session
-                return redirect(url_for('admin_dashboard'))  # Redirect to admin dashboard
+                session['username'] = username
+                session['user_type'] = 'admin'
+                return redirect(url_for('admin_dashboard'))
             else:
                 flash('Invalid admin credentials, please try again.')
                 return redirect(url_for('login'))
@@ -44,19 +46,18 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-    if 'username' in session:
+    if 'username' in session and session.get('user_type') == 'student':
         return render_template('dashboard.html', username=session['username'])
     else:
-        flash('You are not logged in!')
+        flash('You are not logged in as a student!')
         return redirect(url_for('login'))
 
 @app.route('/admin_dashboard')
 def admin_dashboard():
-    if 'username' in session:
-        username = session['username']  # Retrieve the logged-in admin's username
-        return render_template('admin_dashboard.html', username=username)  # Pass username to template
+    if 'username' in session and session.get('user_type') == 'admin':
+        return render_template('admin_dashboard.html', username=session['username'])
     else:
-        flash('You are not logged in!')
+        flash('You are not logged in as an admin!')
         return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -70,21 +71,77 @@ def register():
         faculty = request.form['faculty']
         gender = request.form['gender']
 
-        # Check if the username (email in this case) is already in use
+        # Check if the email is already in use
         if email in users:
             flash('Email is already registered.')
             return redirect(url_for('register'))
 
-        # Add user to the dictionary (you may want to save this to a database in a real application)
-        users[email] = {'password': password, 'student_id': student_id}
+        # Add user to the dictionary
+        users[email] = {'password': password, 'student_id': student_id, 'user_type': 'student'}
 
         # Log the user in
-        session['username'] = name
+        session['username'] = email
+        session['user_type'] = 'student'
 
         # Redirect to dashboard
         return redirect(url_for('dashboard'))
 
     return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('You have been logged out.')
+    return redirect(url_for('login'))
+
+# Additional routes for feature pages
+@app.route('/view_books')
+def view_books():
+    if 'username' in session:
+        return render_template('view_books.html')  # Create this template
+    else:
+        flash('You need to log in first!')
+        return redirect(url_for('login'))
+
+@app.route('/borrowed_books')
+def borrowed_books():
+    if 'username' in session:
+        return render_template('borrowed_books.html')  # Create this template
+    else:
+        flash('You need to log in first!')
+        return redirect(url_for('login'))
+
+@app.route('/request_books')
+def request_books():
+    if 'username' in session:
+        return render_template('request_book.html')  # Create this template
+    else:
+        flash('You need to log in first!')
+        return redirect(url_for('login'))
+
+@app.route('/profile')
+def profile():
+    if 'username' in session:
+        return render_template('profile.html')  # Create this template
+    else:
+        flash('You need to log in first!')
+        return redirect(url_for('login'))
+
+@app.route('/fines')
+def fines():
+    if 'username' in session:
+        return render_template('fines.html')  # Create this template
+    else:
+        flash('You need to log in first!')
+        return redirect(url_for('login'))
+
+@app.route('/notifications')
+def notifications():
+    if 'username' in session:
+        return render_template('notifications.html')  # Create this template
+    else:
+        flash('You need to log in first!')
+        return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -140,11 +140,11 @@
 <nav>
     <ul>
         <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-        <li><a href="#view-books">View Books</a></li>
-        <li><a href="#borrowed-books">Borrowed Books</a></li>
-        <li><a href="#request-books">Request Book</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="{{ url_for('view_books') }}">View Books</a></li>
+        <li><a href="{{ url_for('borrowed_books') }}">Borrowed Books</a></li>
+        <li><a href="{{ url_for('request_books') }}">Request Book</a></li>
+        <li><a href="{{ url_for('profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('notifications') }}">Notifications</a></li>
     </ul>
 </nav>
 
@@ -152,42 +152,42 @@
     <h1>Welcome {{ username }}</h1>
 
     <div class="features">
-        <div class="feature-box" id="view-books">
+        <div class="feature-box">
             <h2>View Available Books</h2>
             <p>Search and browse through the library's collection of books.</p>
-            <a href="#view-books">View Books</a>
+            <a href="{{ url_for('view_books') }}">View Books</a>
         </div>
 
-        <div class="feature-box" id="borrowed-books">
+        <div class="feature-box">
             <h2>Your Borrowed Books</h2>
             <p>See the list of books you've borrowed and their due dates.</p>
-            <a href="#borrowed-books">Check Borrowed Books</a>
+            <a href="{{ url_for('borrowed_books') }}">Check Borrowed Books</a>
         </div>
 
-        <div class="feature-box" id="request-books">
+        <div class="feature-box">
             <h2>Request New Book</h2>
             <p>Need a book that's not available? Request it here.</p>
-            <a href="#request-books">Request a Book</a>
+            <a href="{{ url_for('request_books') }}">Request a Book</a>
         </div>
     </div>
 
     <div class="features" style="margin-top: 20px;">
-        <div class="feature-box" id="profile">
+        <div class="feature-box">
             <h2>Your Profile</h2>
             <p>View and update your personal information, such as contact details and student ID.</p>
-            <a href="#profile">View Profile</a>
+            <a href="{{ url_for('profile') }}">View Profile</a>
         </div>
 
         <div class="feature-box">
             <h2>Fines & Penalties</h2>
             <p>Check if you have any pending fines for overdue books.</p>
-            <a href="#fines">View Fines</a>
+            <a href="{{ url_for('fines') }}">View Fines</a>
         </div>
 
-        <div class="feature-box" id="notifications">
+        <div class="feature-box">
             <h2>Notifications & Reminders</h2>
             <p>See notifications and reminders for due dates and important updates.</p>
-            <a href="#notifications">View Notifications</a>
+            <a href="{{ url_for('notifications') }}">View Notifications</a>
         </div>
     </div>
 
