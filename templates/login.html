@@ -1,32 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>LOGIN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 </head>
 <body>
-    <center><h2>LOGIN</h2></center>
+
+    <h2>Login</h2>
+
     <form method="POST" action="{{ url_for('login') }}">
-        <table align="center">
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" name="username" placeholder="Enter Username" required></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" name="password" placeholder="Enter Password" required></td>
-            </tr>
-            <tr>
-                <td>Student Id:</td>
-                <td><input type="text" name="student_id" placeholder="Enter ID" required></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="remember"> Remember Me</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Log In"></td>
-            </tr>
-        </table>
+        <label for="login_type">Login Type:</label>
+        <select name="login_type" required>
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+        </select>
+        <br><br>
+
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <br><br>
+
+        <!-- Student ID field -->
+        <label>Student ID (for students only):</label>
+        <input type="text" name="student_id" placeholder="Enter Student ID">
+        <br><br>
+
+        <!-- Admin ID field -->
+        <label>Admin ID (for admins only):</label>
+        <input type="text" name="admin_id" placeholder="Enter Admin ID">
+        <br><br>
+
+        <button type="submit">Log In</button>
     </form>
+
 </body>
 </html>
