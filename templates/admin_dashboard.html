@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - SHDL MMU Library</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+        }
+        .feature-box {
+            width: 30%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+    <a href="#manage-books">Manage Books</a>
+    <a href="#student-profiles">Student Profiles</a>
+    <a href="#fines">Fines</a>
+    <a href="#notifications">Notifications</a>
+    <a href="#add-books">Add Books</a>
+</nav>
+
+<div class="container">
+    <h1>Welcome {{ username }}</h1>
+
+    <div class="features">
+        <div class="feature-box" id="manage-books">
+            <h2>Manage Books</h2>
+            <p>View, add, edit, and remove books from the library collection.</p>
+            <a href="#manage-books" style="text-decoration: none;">Manage Books</a>
+        </div>
+
+        <div class="feature-box" id="student-profiles">
+            <h2>Student Profiles</h2>
+            <p>View and manage student profiles, including borrowed books and history.</p>
+            <a href="#student-profiles" style="text-decoration: none;">Manage Profiles</a>
+        </div>
+
+        <div class="feature-box" id="fines">
+            <h2>Manage Fines</h2>
+            <p>Track and manage fines for overdue books or other violations.</p>
+            <a href="#fines" style="text-decoration: none;">Manage Fines</a>
+        </div>
+    </div>
+
+    <div class="features" style="margin-top: 20px;">
+        <div class="feature-box" id="notifications">
+            <h2>Send Notifications</h2>
+            <p>Send notifications to students for due dates, fines, and important updates.</p>
+            <a href="#notifications" style="text-decoration: none;">Send Notifications</a>
+        </div>
+
+        <div class="feature-box" id="add-books">
+            <h2>Add New Books</h2>
+            <p>Add new books to the library's collection and update inventory.</p>
+            <a href="#add-books" style="text-decoration: none;">Add Books</a>
+        </div>
+
+        <div class="feature-box" id="reports">
+            <h2>View Reports</h2>
+            <p>Generate and view reports on book borrowings, fines, and more.</p>
+            <a href="#reports" style="text-decoration: none;">View Reports</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

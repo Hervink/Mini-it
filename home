@@ -5,8 +5,8 @@ app.secret_key = 'your_secret_key'
 
 # Dummy credentials for example
 users = {
-    'student1': {'password': 'password1', 'student_id': '001', 'role': 'student'},
-    'admin1': {'password': 'adminpass', 'admin_id': 'admin001', 'role': 'admin'}
+    'student1': {'password': 'password1', 'student_id': '001'},
+    'admin': {'password': 'adminpass', 'admin_id': 'admin001'}
 }
 
 @app.route('/')
@@ -18,25 +18,23 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        login_type = request.form['login_type']  # student or admin
+        user_type = request.form['login_type']  # login_type field to differentiate between student and admin
 
-        # Handle student login
-        if login_type == 'student':
+        if user_type == 'student':
             student_id = request.form['student_id']
-            if username in users and users[username]['password'] == password and users[username].get('student_id') == student_id and users[username]['role'] == 'student':
+            # Verify student credentials
+            if username in users and users[username]['password'] == password and users[username].get('student_id') == student_id:
                 session['username'] = username
-                session['role'] = 'student'
-                return redirect(url_for('student_dashboard'))
+                return redirect(url_for('dashboard'))
             else:
                 flash('Invalid student credentials, please try again.')
                 return redirect(url_for('login'))
 
-        # Handle admin login
-        elif login_type == 'admin':
+        elif user_type == 'admin':
             admin_id = request.form['admin_id']
-            if username in users and users[username]['password'] == password and users[username].get('admin_id') == admin_id and users[username]['role'] == 'admin':
+            # Verify admin credentials
+            if username in users and users[username]['password'] == password and users[username].get('admin_id') == admin_id:
                 session['username'] = username
-                session['role'] = 'admin'
                 return redirect(url_for('admin_dashboard'))
             else:
                 flash('Invalid admin credentials, please try again.')
@@ -44,20 +42,20 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/student_dashboard')
-def student_dashboard():
-    if 'username' in session and session.get('role') == 'student':
-        return render_template('dashboard.html', username=session['username'])  # Render dashboard.html for students
+@app.route('/dashboard')
+def dashboard():
+    if 'username' in session:
+        return render_template('dashboard.html', username=session['username'])
     else:
-        flash('You are not authorized to access the student dashboard!')
+        flash('You are not logged in!')
         return redirect(url_for('login'))
 
 @app.route('/admin_dashboard')
 def admin_dashboard():
-    if 'username' in session and session.get('role') == 'admin':
+    if 'username' in session:
         return render_template('admin_dashboard.html', username=session['username'])
     else:
-        flash('You are not authorized to access the admin dashboard!')
+        flash('You are not logged in!')
         return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -71,20 +69,19 @@ def register():
         faculty = request.form['faculty']
         gender = request.form['gender']
 
-        # Check if the email is already in use
+        # Check if the username (email in this case) is already in use
         if email in users:
             flash('Email is already registered.')
             return redirect(url_for('register'))
 
         # Add user to the dictionary (you may want to save this to a database in a real application)
-        users[email] = {'password': password, 'student_id': student_id, 'role': 'student'}
+        users[email] = {'password': password, 'student_id': student_id}
 
         # Log the user in
         session['username'] = name
-        session['role'] = 'student'
 
-        # Redirect to student dashboard
-        return redirect(url_for('student_dashboard'))
+        # Redirect to dashboard
+        return redirect(url_for('dashboard'))
 
     return render_template('register.html')
 
