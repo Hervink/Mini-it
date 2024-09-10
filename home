@@ -5,8 +5,8 @@ app.secret_key = 'your_secret_key'
 
 # Dummy credentials for example
 users = {
-    'student1': {'password': 'password1', 'student_id': '001'},
-    'admin': {'password': 'adminpass', 'admin_id': 'admin001'}
+    'hervin': {'password': 'password', 'student_id': '1221103173'},
+    'admin': {'password': 'password1', 'admin_id': 'admin1'}
 }
 
 @app.route('/')
