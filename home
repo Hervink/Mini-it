@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# Dummy credentials for example
+# data
 users = {
     'hervin': {'password': 'password', 'student_id': '1221103173', 'user_type': 'student'},
     'admin': {'password': 'password1', 'admin_id': 'admin1', 'user_type': 'admin'}
@@ -98,7 +98,7 @@ def logout():
 @app.route('/view_books')
 def view_books():
     if 'username' in session:
-        return render_template('view_books.html')  # Create this template
+        return render_template('view_books.html')  
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
@@ -106,7 +106,7 @@ def view_books():
 @app.route('/borrowed_books')
 def borrowed_books():
     if 'username' in session:
-        return render_template('borrowed_books.html')  # Create this template
+        return render_template('borrowed_books.html')  
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
@@ -114,15 +114,14 @@ def borrowed_books():
 @app.route('/request_books')
 def request_books():
     if 'username' in session:
-        return render_template('request_book.html')  # Create this template
-    else:
+        return render_template('request_book.html') 
         flash('You need to log in first!')
         return redirect(url_for('login'))
 
 @app.route('/profile')
 def profile():
     if 'username' in session:
-        return render_template('profile.html')  # Create this template
+        return render_template('profile.html')  
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
@@ -130,15 +129,14 @@ def profile():
 @app.route('/fines')
 def fines():
     if 'username' in session:
-        return render_template('fines.html')  # Create this template
-    else:
+        return render_template('fines.html')  
         flash('You need to log in first!')
         return redirect(url_for('login'))
 
 @app.route('/notifications')
 def notifications():
     if 'username' in session:
-        return render_template('notifications.html')  # Create this template
+        return render_template('notifications.html')  
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
