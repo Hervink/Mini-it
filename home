@@ -3,7 +3,31 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# data
+# Sample book data for faculties
+books_data = {
+    'fci': [
+        {'bookid': 1, 'name': 'Introduction to Algorithms', 'isbn': '9780262033848', 'author_name': 'Thomas H. Cormen', 'description': 'A comprehensive guide to algorithms.', 'picture': 'algorithms.jpg'},
+        {'bookid': 2, 'name': 'Artificial Intelligence', 'isbn': '9780136042594', 'author_name': 'Stuart Russell', 'description': 'An introduction to AI.', 'picture': 'ai.jpg'}
+        # Add 8 more books for FCI
+    ],
+    'foe': [
+        {'bookid': 1, 'name': 'Mechanics of Materials', 'isbn': '9780073398235', 'author_name': 'James M. Gere', 'description': 'An in-depth look into materials mechanics.', 'picture': 'materials.jpg'},
+        {'bookid': 2, 'name': 'Thermodynamics', 'isbn': '9780133482177', 'author_name': 'Michael J. Moran', 'description': 'Basic principles of thermodynamics.', 'picture': 'thermodynamics.jpg'}
+        # Add 8 more books for FOE
+    ],
+    'fca': [
+        {'bookid': 1, 'name': 'Business Management', 'isbn': '9780273711215', 'author_name': 'David Boddy', 'description': 'Understanding the core concepts of management.', 'picture': 'business.jpg'},
+        {'bookid': 2, 'name': 'Marketing Principles', 'isbn': '9780132169027', 'author_name': 'Philip Kotler', 'description': 'A fundamental look at marketing.', 'picture': 'marketing.jpg'}
+        # Add 8 more books for FCA
+    ],
+    'fom': [
+        {'bookid': 1, 'name': 'Financial Accounting', 'isbn': '9781292128979', 'author_name': 'Walter T. Harrison', 'description': 'An introduction to financial accounting.', 'picture': 'accounting.jpg'},
+        {'bookid': 2, 'name': 'Managerial Accounting', 'isbn': '9780133058788', 'author_name': 'Ray H. Garrison', 'description': 'Principles of managerial accounting.', 'picture': 'managerial.jpg'}
+        # Add 8 more books for FOM
+    ]
+}
+
+# Sample user data
 users = {
     'hervin': {'password': 'password', 'student_id': '1221103173', 'user_type': 'student'},
     'admin': {'password': 'password1', 'admin_id': 'admin1', 'user_type': 'admin'}
@@ -18,11 +42,10 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user_type = request.form['login_type']  # login_type field to differentiate between student and admin
+        user_type = request.form['login_type']
 
         if user_type == 'student':
             student_id = request.form['student_id']
-            # Verify student credentials
             if username in users and users[username]['password'] == password and users[username].get('student_id') == student_id:
                 session['username'] = username
                 session['user_type'] = 'student'
@@ -33,7 +56,6 @@ def login():
 
         elif user_type == 'admin':
             admin_id = request.form['admin_id']
-            # Verify admin credentials
             if username in users and users[username]['password'] == password and users[username].get('admin_id') == admin_id:
                 session['username'] = username
                 session['user_type'] = 'admin'
@@ -60,45 +82,15 @@ def admin_dashboard():
         flash('You are not logged in as an admin!')
         return redirect(url_for('login'))
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-        student_id = request.form['student_id']
-        phone = request.form['phone']
-        faculty = request.form['faculty']
-        gender = request.form['gender']
-
-        # Check if the email is already in use
-        if email in users:
-            flash('Email is already registered.')
-            return redirect(url_for('register'))
-
-        # Add user to the dictionary
-        users[email] = {'password': password, 'student_id': student_id, 'user_type': 'student'}
-
-        # Log the user in
-        session['username'] = email
-        session['user_type'] = 'student'
-
-        # Redirect to dashboard
-        return redirect(url_for('dashboard'))
-
-    return render_template('register.html')
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    flash('You have been logged out.')
-    return redirect(url_for('login'))
-
-# Additional routes for feature pages
-@app.route('/view_books')
-def view_books():
+@app.route('/view_books/<faculty>')
+def view_books(faculty):
     if 'username' in session:
-        return render_template('view_books.html')  
+        if faculty in books_data:
+            books = books_data[faculty]
+            return render_template('view_books.html', books=books, faculty=faculty)
+        else:
+            flash('Invalid faculty selected!')
+            return redirect(url_for('dashboard'))
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
@@ -106,40 +98,16 @@ def view_books():
 @app.route('/borrowed_books')
 def borrowed_books():
     if 'username' in session:
-        return render_template('borrowed_books.html')  
+        return render_template('borrowed_books.html')
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
 
-@app.route('/request_books')
-def request_books():
-    if 'username' in session:
-        return render_template('request_book.html') 
-        flash('You need to log in first!')
-        return redirect(url_for('login'))
-
-@app.route('/profile')
-def profile():
-    if 'username' in session:
-        return render_template('profile.html')  
-    else:
-        flash('You need to log in first!')
-        return redirect(url_for('login'))
-
-@app.route('/fines')
-def fines():
-    if 'username' in session:
-        return render_template('fines.html')  
-        flash('You need to log in first!')
-        return redirect(url_for('login'))
-
-@app.route('/notifications')
-def notifications():
-    if 'username' in session:
-        return render_template('notifications.html')  
-    else:
-        flash('You need to log in first!')
-        return redirect(url_for('login'))
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('You have been logged out.')
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
