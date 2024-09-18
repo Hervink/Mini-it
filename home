@@ -43,28 +43,28 @@ books_data = {
          'description': 'An in-depth look at the principles and applications of semiconductor devices in electronic engineering.', 'image': 'foe10.jpg'}
     ],
     'fca': [
-        {'bookid': 1, 'name': 'Business Management', 'isbn': '9780273711215', 'author_name': 'David Boddy', 'description': 'Understanding the core concepts of management.','image': 'fca1.jpg'},
-        {'bookid': 2, 'name': 'Marketing Principles', 'isbn': '9780132169027', 'author_name': 'Philip Kotler', 'description': 'A fundamental look at marketing.','image': 'fca2.jpg'},
-        {'bookid': 3, 'name': 'Corporate Finance', 'isbn': '9780077861759', 'author_name': 'Stephen A. Ross', 'description': 'An introduction to corporate finance.','image': 'fca3.jpg'},
-        {'bookid': 4, 'name': 'Human Resource Management', 'isbn': '9780133029696', 'author_name': 'Gary Dessler', 'description': 'Essentials of human resource management.','image': 'fca4.jpg'},
-        {'bookid': 5, 'name': 'Organizational Behavior', 'isbn': '9780133507645', 'author_name': 'Stephen P. Robbins', 'description': 'Insights into organizational behavior and management.','image': 'fca5.jpg'},
-        {'bookid': 6, 'name': 'Accounting Principles', 'isbn': '9780133118955', 'author_name': 'Jerry J. Weygandt', 'description': 'A guide to accounting principles.','image': 'fca6.jpg'},
-        {'bookid': 7, 'name': 'Financial Markets and Institutions', 'isbn': '9780133743240', 'author_name': 'Frederic S. Mishkin', 'description': 'A comprehensive look at financial markets.','image': 'fca7.jpg'},
-        {'bookid': 8, 'name': 'Consumer Behavior', 'isbn': '9780133424044', 'author_name': 'Michael R. Solomon', 'description': 'Fundamentals of consumer behavior.','image': 'fca8.jpg'},
+        {'bookid': 1, 'name': 'Critical thinking skills', 'isbn': '9780273711215', 'author_name': 'David Boddy', 'description': 'Understanding the core concepts of management.','image': 'fca1.jpg'},
+        {'bookid': 2, 'name': 'Instructional design', 'isbn': '9780132169027', 'author_name': 'Philip Kotler', 'description': 'A fundamental look at marketing.','image': 'fca2.jpg'},
+        {'bookid': 3, 'name': 'Creating ecourses', 'isbn': '9780077861759', 'author_name': 'Stephen A. Ross', 'description': 'An introduction to corporate finance.','image': 'fca3.jpg'},
+        {'bookid': 4, 'name': 'Vinyl record collecting', 'isbn': '9780133029696', 'author_name': 'Gary Dessler', 'description': 'Essentials of human resource management.','image': 'fca4.jpg'},
+        {'bookid': 5, 'name': 'Astrophysics', 'isbn': '9780133507645', 'author_name': 'Stephen P. Robbins', 'description': 'Insights into organizational behavior and management.','image': 'fca5.jpg'},
+        {'bookid': 6, 'name': '2024 solar eciplse', 'isbn': '9780133118955', 'author_name': 'Jerry J. Weygandt', 'description': 'A guide to accounting principles.','image': 'fca6.jpg'},
+        {'bookid': 7, 'name': '5 Hour quick prep', 'isbn': '9780133743240', 'author_name': 'Frederic S. Mishkin', 'description': 'A comprehensive look at financial markets.','image': 'fca7.jpg'},
+        {'bookid': 8, 'name': 'Human geography', 'isbn': '9780133424044', 'author_name': 'Michael R. Solomon', 'description': 'Fundamentals of consumer behavior.','image': 'fca8.jpg'},
         {'bookid': 9, 'name': 'Strategic Management', 'isbn': '9780133127407', 'author_name': 'Frank T. Rothaermel', 'description': 'A comprehensive guide to strategic management.','image': 'fca9.jpg'},
         {'bookid': 10, 'name': 'Economics', 'isbn': '9780132926604', 'author_name': 'Paul Krugman', 'description': 'Fundamentals of economics.','image': 'fca10.jpg'}
     ],
     'fom': [
-        {'bookid': 1, 'name': 'Financial Accounting', 'isbn': '9781292128979', 'author_name': 'Walter T. Harrison', 'description': 'An introduction to financial accounting.'},
-        {'bookid': 2, 'name': 'Managerial Accounting', 'isbn': '9780133058788', 'author_name': 'Ray H. Garrison', 'description': 'Principles of managerial accounting.'},
-        {'bookid': 3, 'name': 'Cost Accounting', 'isbn': '9780133428727', 'author_name': 'Charles T. Horngren', 'description': 'A deep dive into cost accounting.'},
-        {'bookid': 4, 'name': 'Intermediate Accounting', 'isbn': '9780133255412', 'author_name': 'Donald E. Kieso', 'description': 'A study of intermediate accounting principles.'},
-        {'bookid': 5, 'name': 'Taxation', 'isbn': '9780077862923', 'author_name': 'David H. Williams', 'description': 'A guide to taxation and tax systems.'},
-        {'bookid': 6, 'name': 'Auditing and Assurance Services', 'isbn': '9780136124015', 'author_name': 'Alvin A. Arens', 'description': 'Comprehensive guide to auditing.'},
-        {'bookid': 7, 'name': 'Corporate Reporting', 'isbn': '9780136000395', 'author_name': 'David Alexander', 'description': 'Insights into corporate reporting and governance.'},
-        {'bookid': 8, 'name': 'Principles of Macroeconomics', 'isbn': '9780132139631', 'author_name': 'N. Gregory Mankiw', 'description': 'Fundamentals of macroeconomic principles.'},
-        {'bookid': 9, 'name': 'Microeconomics', 'isbn': '9780132080230', 'author_name': 'Robert Pindyck', 'description': 'A guide to microeconomic theory.'},
-        {'bookid': 10, 'name': 'Advanced Financial Accounting', 'isbn': '9780132522983', 'author_name': 'Richard E. Baker', 'description': 'Advanced topics in financial accounting.'}
+        {'bookid': 1, 'name': 'Financial Accounting', 'isbn': '9781292128979', 'author_name': 'Walter T. Harrison', 'description': 'An introduction to financial accounting.','image': 'fom1.jpg'},
+        {'bookid': 2, 'name': 'Managerial Accounting', 'isbn': '9780133058788', 'author_name': 'Ray H. Garrison', 'description': 'Principles of managerial accounting.','image': 'fom2.jpg'},
+        {'bookid': 3, 'name': 'Cost Accounting', 'isbn': '9780133428727', 'author_name': 'Charles T. Horngren', 'description': 'A deep dive into cost accounting.','image': 'fom3.jpg'},
+        {'bookid': 4, 'name': 'Intermediate Accounting', 'isbn': '9780133255412', 'author_name': 'Donald E. Kieso', 'description': 'A study of intermediate accounting principles.','image': 'fom4.jpg'},
+        {'bookid': 5, 'name': 'Taxation', 'isbn': '9780077862923', 'author_name': 'David H. Williams', 'description': 'A guide to taxation and tax systems.','image': 'fom5.jpg'},
+        {'bookid': 6, 'name': 'Auditing and Assurance Services', 'isbn': '9780136124015', 'author_name': 'Alvin A. Arens', 'description': 'Comprehensive guide to auditing.','image': 'fom6.jpg'},
+        {'bookid': 7, 'name': 'Corporate Reporting', 'isbn': '9780136000395', 'author_name': 'David Alexander', 'description': 'Insights into corporate reporting and governance.','image': 'fom7.jpg'},
+        {'bookid': 8, 'name': 'Principles of Macroeconomics', 'isbn': '9780132139631', 'author_name': 'N. Gregory Mankiw', 'description': 'Fundamentals of macroeconomic principles.','image': 'fom8.jpg'},
+        {'bookid': 9, 'name': 'Microeconomics', 'isbn': '9780132080230', 'author_name': 'Robert Pindyck', 'description': 'A guide to microeconomic theory.','image': 'fom9.jpg'},
+        {'bookid': 10, 'name': 'Advanced Financial Accounting', 'isbn': '9780132522983', 'author_name': 'Richard E. Baker', 'description': 'Advanced topics in financial accounting.','image': 'fom10.jpg'}
     ]
 }
 
