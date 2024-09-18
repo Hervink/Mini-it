@@ -3,27 +3,68 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# Sample book data for faculties
+# Sample book data for faculties need to add picture
 books_data = {
     'fci': [
-        {'bookid': 1, 'name': 'Introduction to Algorithms', 'isbn': '9780262033848', 'author_name': 'Thomas H. Cormen', 'description': 'A comprehensive guide to algorithms.', 'picture': 'algorithms.jpg'},
-        {'bookid': 2, 'name': 'Artificial Intelligence', 'isbn': '9780136042594', 'author_name': 'Stuart Russell', 'description': 'An introduction to AI.', 'picture': 'ai.jpg'}
-        # Add 8 more books for FCI
+        {'bookid': 1, 'name': 'Apple Vision Pro For Dummies', 'isbn': '9780262033848', 'author_name': 'Marc Saltzman', 
+         'description': "A computer you wear like goggles? Yes, it's true—learn all about the new Apple Vision Pro Apple Vision Pro For Dummies is a practical guide to Apple's first new product in eight years. Considered a spatial computer, Vision Pro lets you see your apps right in front of your eyes and interact with the interface using eye movement, hand gestures, and your voice. It fuses virtual reality, where you're completely immersed in a 360-degree digital space, with augmented reality, which lets you see the real world around you, but augmented (or enhanced) with digital information superimposed on top. Futuristic, right? This book helps you understand visionOS and get started with spatial computing.", 'image': 'fci1.jpg'},
+        {'bookid': 2, 'name': 'Writing AI Prompts For Dummies', 'isbn': '9780131101630', 'author_name': 'Stephanie Diamond , Jeffrey Allan', 
+         'description': "Unlock the full power of generative AI with Writing AI Prompts For Dummies, a comprehensive guide that will teach you how to confidently write effective AI prompts. Whether it's text, images, or even videos and music you're aiming to create, this book provides the foundational knowledge and practical strategies needed to produce impressive results.", 'image': 'fci2.jpg'},
+        {'bookid': 3, 'name': 'Data Analytics & Visualization All-in-One For Dummies', 'isbn': '9780131101630', 'author_name': 'Mark Allen Weiss', 
+         'description': "Data Analytics & Visualization All-in-One For Dummies collects the essential information on mining, organizing, and communicating data, all in one place. Clocking in at around 850 pages, this tome of a reference delivers eight books in one, so you can build a solid foundation of knowledge in data wrangling. Data analytics professionals are highly sought after these days, and this book will put you on the path to becoming one. You’ll learn all about sources of data like data lakes, and you ll discover how to extract data using tools like Microsoft Power.", 'image': 'fci3.jpg'},
+        {'bookid': 4, 'name': 'Database System Concepts', 'isbn': '9780078022150', 'author_name': 'Abraham Silberschatz', 'description': 'Fundamentals of database systems.', 'image': 'fci4.jpg'},
+        {'bookid': 5, 'name': 'Operating System Concepts', 'isbn': '9781118063330', 'author_name': 'Abraham Silberschatz', 'description': 'In-depth understanding of operating systems.', 'image': 'fci5.jpg'},
+        {'bookid': 6, 'name': 'Introduction to Computation and Programming Using Python', 'isbn': '9780262529624', 'author_name': 'John Guttag', 'description': 'Python programming fundamentals.', 'image': 'fci6.jpg'},
+        {'bookid': 7, 'name': 'Computer Networks', 'isbn': '9780132126953', 'author_name': 'Andrew S. Tanenbaum', 'description': 'A comprehensive guide to computer networks.', 'image': 'fci7.jpg'},
+        {'bookid': 8, 'name': 'Artificial Intelligence: A Modern Approach', 'isbn': '9780136042594', 'author_name': 'Stuart Russell', 'description': 'In-depth introduction to AI.', 'image': 'fci8.jpg'},
+        {'bookid': 9, 'name': 'Machine Learning', 'isbn': '9780071154672', 'author_name': 'Tom Mitchell', 'description': 'Basics of machine learning.', 'image': 'fci9.jpg'},
+        {'bookid': 10, 'name': 'Deep Learning', 'isbn': '9780262035613', 'author_name': 'Ian Goodfellow', 'description': 'Comprehensive guide to deep learning.', 'image': 'fci10.jpg'}
     ],
     'foe': [
-        {'bookid': 1, 'name': 'Mechanics of Materials', 'isbn': '9780073398235', 'author_name': 'James M. Gere', 'description': 'An in-depth look into materials mechanics.', 'picture': 'materials.jpg'},
-        {'bookid': 2, 'name': 'Thermodynamics', 'isbn': '9780133482177', 'author_name': 'Michael J. Moran', 'description': 'Basic principles of thermodynamics.', 'picture': 'thermodynamics.jpg'}
-        # Add 8 more books for FOE
+        {'bookid': 1, 'name': 'The Design of Everyday Things', 'isbn': '0465050654', 'author_name': 'Don Norman',
+         'description': 'This book explores how design serves as the communication between object and user, and how good design is intuitive and functional.', 'image': 'foe1.jpg'},
+        {'bookid': 2, 'name': 'Engineering Mechanics: Dynamics', 'isbn': '0470045760', 'author_name': 'James L. Meriam', 
+         'description': 'An in-depth introduction to dynamics that covers all the fundamental principles with a variety of applications.', 'image': 'foe2.jpg'},
+        {'bookid': 3, 'name': 'Structures: Or Why Things Don\'t Fall Down', 'isbn': '0140135387', 'author_name': 'J.E. Gordon', 
+         'description': 'An accessible introduction to the principles of structural engineering that explains why structures succeed or fail.', 'image': 'foe3.jpg'},
+        {'bookid': 4, 'name': 'The Art of Electronics', 'isbn': '0521370957', 'author_name': 'Paul Horowitz', 
+         'description': 'A comprehensive guide to electronics that covers both theory and practical aspects of the field.', 'image': 'foe4.jpg'},
+        {'bookid': 5, 'name': 'Introduction to Fluid Mechanics', 'isbn': '0367336207', 'author_name': 'Robert W. Fox', 
+         'description': 'A thorough introduction to fluid mechanics, covering fundamental concepts and real-world applications.', 'image': 'foe5.jpg'},
+        {'bookid': 6, 'name': 'The Elements of Style', 'isbn': '020530902X', 'author_name': 'William Strunk Jr.', 
+         'description': 'A classic guide to clear and effective writing, essential for engineers who need to communicate their ideas effectively.', 'image': 'foe6.jpg'},
+        {'bookid': 7, 'name': 'Engineering: A Very Short Introduction', 'isbn': '0198748487', 'author_name': 'David Blockley', 
+         'description': 'A concise introduction to the field of engineering, its history, and its impact on the modern world.', 'image': 'foe7.jpg'},
+        {'bookid': 8, 'name': 'Engineering Thermodynamics', 'isbn': '0470463505', 'author_name': 'Yunus Çengel', 
+         'description': 'An introduction to the principles of thermodynamics with applications in engineering contexts.', 'image': 'foe8.jpg'},
+        {'bookid': 9, 'name': 'Mechanical Engineering Design', 'isbn': '0073398208', 'author_name': 'J.E. Shigley', 
+         'description': 'A comprehensive guide to mechanical design principles, including materials, stress analysis, and machine components.', 'image': 'foe9.jpg'},
+        {'bookid': 10, 'name': 'The Physics of Semiconductor Devices', 'isbn': '0471362171', 'author_name': 'Simon M. Sze', 
+         'description': 'An in-depth look at the principles and applications of semiconductor devices in electronic engineering.', 'image': 'foe10.jpg'}
     ],
     'fca': [
-        {'bookid': 1, 'name': 'Business Management', 'isbn': '9780273711215', 'author_name': 'David Boddy', 'description': 'Understanding the core concepts of management.', 'picture': 'business.jpg'},
-        {'bookid': 2, 'name': 'Marketing Principles', 'isbn': '9780132169027', 'author_name': 'Philip Kotler', 'description': 'A fundamental look at marketing.', 'picture': 'marketing.jpg'}
-        # Add 8 more books for FCA
+        {'bookid': 1, 'name': 'Business Management', 'isbn': '9780273711215', 'author_name': 'David Boddy', 'description': 'Understanding the core concepts of management.'},
+        {'bookid': 2, 'name': 'Marketing Principles', 'isbn': '9780132169027', 'author_name': 'Philip Kotler', 'description': 'A fundamental look at marketing.'},
+        {'bookid': 3, 'name': 'Corporate Finance', 'isbn': '9780077861759', 'author_name': 'Stephen A. Ross', 'description': 'An introduction to corporate finance.'},
+        {'bookid': 4, 'name': 'Human Resource Management', 'isbn': '9780133029696', 'author_name': 'Gary Dessler', 'description': 'Essentials of human resource management.'},
+        {'bookid': 5, 'name': 'Organizational Behavior', 'isbn': '9780133507645', 'author_name': 'Stephen P. Robbins', 'description': 'Insights into organizational behavior and management.'},
+        {'bookid': 6, 'name': 'Accounting Principles', 'isbn': '9780133118955', 'author_name': 'Jerry J. Weygandt', 'description': 'A guide to accounting principles.'},
+        {'bookid': 7, 'name': 'Financial Markets and Institutions', 'isbn': '9780133743240', 'author_name': 'Frederic S. Mishkin', 'description': 'A comprehensive look at financial markets.'},
+        {'bookid': 8, 'name': 'Consumer Behavior', 'isbn': '9780133424044', 'author_name': 'Michael R. Solomon', 'description': 'Fundamentals of consumer behavior.'},
+        {'bookid': 9, 'name': 'Strategic Management', 'isbn': '9780133127407', 'author_name': 'Frank T. Rothaermel', 'description': 'A comprehensive guide to strategic management.'},
+        {'bookid': 10, 'name': 'Economics', 'isbn': '9780132926604', 'author_name': 'Paul Krugman', 'description': 'Fundamentals of economics.'}
     ],
     'fom': [
-        {'bookid': 1, 'name': 'Financial Accounting', 'isbn': '9781292128979', 'author_name': 'Walter T. Harrison', 'description': 'An introduction to financial accounting.', 'picture': 'accounting.jpg'},
-        {'bookid': 2, 'name': 'Managerial Accounting', 'isbn': '9780133058788', 'author_name': 'Ray H. Garrison', 'description': 'Principles of managerial accounting.', 'picture': 'managerial.jpg'}
-        # Add 8 more books for FOM
+        {'bookid': 1, 'name': 'Financial Accounting', 'isbn': '9781292128979', 'author_name': 'Walter T. Harrison', 'description': 'An introduction to financial accounting.'},
+        {'bookid': 2, 'name': 'Managerial Accounting', 'isbn': '9780133058788', 'author_name': 'Ray H. Garrison', 'description': 'Principles of managerial accounting.'},
+        {'bookid': 3, 'name': 'Cost Accounting', 'isbn': '9780133428727', 'author_name': 'Charles T. Horngren', 'description': 'A deep dive into cost accounting.'},
+        {'bookid': 4, 'name': 'Intermediate Accounting', 'isbn': '9780133255412', 'author_name': 'Donald E. Kieso', 'description': 'A study of intermediate accounting principles.'},
+        {'bookid': 5, 'name': 'Taxation', 'isbn': '9780077862923', 'author_name': 'David H. Williams', 'description': 'A guide to taxation and tax systems.'},
+        {'bookid': 6, 'name': 'Auditing and Assurance Services', 'isbn': '9780136124015', 'author_name': 'Alvin A. Arens', 'description': 'Comprehensive guide to auditing.'},
+        {'bookid': 7, 'name': 'Corporate Reporting', 'isbn': '9780136000395', 'author_name': 'David Alexander', 'description': 'Insights into corporate reporting and governance.'},
+        {'bookid': 8, 'name': 'Principles of Macroeconomics', 'isbn': '9780132139631', 'author_name': 'N. Gregory Mankiw', 'description': 'Fundamentals of macroeconomic principles.'},
+        {'bookid': 9, 'name': 'Microeconomics', 'isbn': '9780132080230', 'author_name': 'Robert Pindyck', 'description': 'A guide to microeconomic theory.'},
+        {'bookid': 10, 'name': 'Advanced Financial Accounting', 'isbn': '9780132522983', 'author_name': 'Richard E. Baker', 'description': 'Advanced topics in financial accounting.'}
     ]
 }
 
@@ -66,9 +107,44 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/dashboard')
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+        student_id = request.form['student_id']
+        phone = request.form['phone']
+        faculty = request.form['faculty']
+        gender = request.form['gender']
+        
+        # Check if the student_id already exists
+        if any(user['student_id'] == student_id for user in users.values()):
+            flash('Student ID already registered. Please use a different ID.')
+            return redirect(url_for('register'))
+        
+        # Add new user to the users dictionary
+        users[name] = {
+            'password': password,
+            'student_id': student_id,
+            'email': email,
+            'phone': phone,
+            'faculty': faculty,
+            'gender': gender,
+            'user_type': 'student'
+        }
+
+        flash('Registration successful! You can now log in.')
+        return redirect(url_for('login'))
+
+    return render_template('register.html')
+
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     if 'username' in session and session.get('user_type') == 'student':
+        if request.method == 'POST':
+            selected_faculty = request.form['faculty']
+            return redirect(url_for('view_books', faculty=selected_faculty))
         return render_template('dashboard.html', username=session['username'])
     else:
         flash('You are not logged in as a student!')
@@ -91,14 +167,6 @@ def view_books(faculty):
         else:
             flash('Invalid faculty selected!')
             return redirect(url_for('dashboard'))
-    else:
-        flash('You need to log in first!')
-        return redirect(url_for('login'))
-
-@app.route('/borrowed_books')
-def borrowed_books():
-    if 'username' in session:
-        return render_template('borrowed_books.html')
     else:
         flash('You need to log in first!')
         return redirect(url_for('login'))
