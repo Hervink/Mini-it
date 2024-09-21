@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# Sample book data for faculties need to add picture
+# book
 books_data = {
     'fci': [
         {'bookid': 1, 'name': 'Apple Vision Pro For Dummies', 'isbn': '9780262033848', 'author_name': 'Marc Saltzman', 
