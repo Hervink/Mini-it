@@ -17,6 +17,7 @@
         <a href="dashboard.php" class="right">DASHBOARD</a>
        
     <?php else: ?>
+        <a href="book.php">SEARCH BOOK</a>
         <a href="login.php" class="right">LOGIN</a>
         <a href="registration.php" class="right">REGISTER</a>
     <?php endif; ?>
