@@ -23,7 +23,7 @@ session_start();
         <a href="login.php" class="right">LOGIN</a>
         <a href="registration.php" class="right">REGISTER</a>
         <a href="about.php">ABOUT</a>
-        <a href="contact.php">CONTACT</a>
+        <a href="contact_us.php">CONTACT</a>
     <?php endif; ?>
 </div>
 
