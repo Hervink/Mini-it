@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+    <form action="registration.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" maxlength="15" required> <br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" maxlength="15" required> <br>
+
+        <label for="student_id">Student ID:</label>
+        <input type="number" id="student_id" name="student_id" maxlength="15" required> <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="40" required> <br>
+
+        <label for="faculty">Faculty:</label>
+        <input type="text" id="faculty" name="faculty" maxlength="15" required> <br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+        </select> <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" maxlength="15" required> <br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
