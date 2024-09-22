@@ -5,7 +5,8 @@
 </head>
 <body>
     <?php
-        echo "Welcome to Online Library Management" ;
+        echo "" Welcome to Online Library Management" ;
     ?>
-</body>
+</body> 
 </html>
+<!-- When using the browser to display the code, the file that is named 'index.php' will be automatically called, other pages you must call by yourself --
