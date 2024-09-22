@@ -12,6 +12,8 @@
     <a href="index.php">HOME</a>
     <a href="about.php">ABOUT</a>
     <a href="contact.php">CONTACT</a>
+    <a href="borrow_book.php">Borrow Book</a>
+    <a href="return_book.php">Return Book</a>
     
     <?php if (isset($_SESSION['user_id'])): ?>
         <a href="dashboard.php" class="right">DASHBOARD</a>
