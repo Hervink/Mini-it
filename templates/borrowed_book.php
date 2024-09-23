@@ -1,25 +1,41 @@
 <?php
-session_start();
-include 'connection.php';
+include 'connection.php'; // Include database connection file
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    echo "<p>You must be logged in to borrow a book. <a href='login.php'>Login here</a>.</p>";
-    exit; // Stop further execution if not logged in
-}
+// Enable error reporting
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+error_reporting(E_ALL);
 
-// Assuming user_id is stored in session
-$userId = $_SESSION['user_id'];
-
+// Check if the form to borrow a book is submitted
 if (isset($_POST['borrow'])) {
     $isbn = mysqli_real_escape_string($conn, $_POST['isbn']);
-    $borrowDate = date("Y-m-d H:i:s"); // Current date and time
+    $borrowDate = date("Y-m-d H:i:s");
+    $returnDate = date("Y-m-d H:i:s", strtotime('+7 days'));
 
-    // Insert the borrowed book details into the borrowed_books table
-    $sql = "INSERT INTO borrowed_books (user_id, isbn, borrow_date) VALUES ('$userId', '$isbn', '$borrowDate')";
+    $sql = "INSERT INTO borrowed_books (isbn, `BORROW DATE`, `RETURN DATE`) 
+            VALUES ('$isbn', '$borrowDate', '$returnDate')";
     
     if ($conn->query($sql) === TRUE) {
-        echo "<p>Book borrowed successfully.</p>";
+        echo "<p>Book borrowed successfully. Return it by $returnDate.</p>";
+    } else {
+        echo "<p>Error: " . $conn->error . "</p>";
+    }
+}
+
+// Check if the form to update a book is submitted
+if (isset($_POST['update'])) {
+    $isbn = mysqli_real_escape_string($conn, $_POST['isbn']);
+    $borrowDate = mysqli_real_escape_string($conn, $_POST['borrow_date']);
+    $returnDate = mysqli_real_escape_string($conn, $_POST['return_date']);
+
+    $sql = "UPDATE borrowed_books SET `BORROW DATE` = '$borrowDate', `RETURN DATE` = '$returnDate' 
+            WHERE isbn = '$isbn'";
+    
+    echo "<p>SQL Query: $sql</p>"; // Debugging: Show the SQL query
+
+    if ($conn->query($sql) === TRUE) {
+        // Redirect to the same page to avoid resubmission
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
     } else {
         echo "<p>Error: " . $conn->error . "</p>";
     }
@@ -35,13 +51,13 @@ $resultBooks = $conn->query($sqlBooks);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borrow Book</title>
+    <title>Update Borrowed Book</title>
 </head>
 <body>
 
-<h2>Borrow a Book</h2>
+<center><h2>Borrowed Book</h2></center>
 <form method="POST" action="">
-    <label for="isbn">Select a Book to Borrow:</label>
+    <label for="isbn">Select a Book:</label>
     <select name="isbn" id="isbn" required>
         <?php
         if ($resultBooks->num_rows > 0) {
@@ -53,7 +69,15 @@ $resultBooks = $conn->query($sqlBooks);
         }
         ?>
     </select>
-    <button type="submit" name="borrow">Borrow Book</button>
+    <br><br>
+
+    <label for="borrow_date">Borrow Date:</label>
+    <input type="date" name="borrow_date" id="borrow_date" required><br><br>
+
+    <label for="return_date">Return Date:</label>
+    <input type="date" name="return_date" id="return_date" required><br><br>
+
+    <button type="submit" name="update">Update Book Details</button>
 </form>
 
 </body>
