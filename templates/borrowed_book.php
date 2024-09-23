@@ -5,39 +5,25 @@ include 'connection.php'; // Include database connection file
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL);
 
-// Check if the form to borrow a book is submitted
+// Check if the form to borrow books is submitted
 if (isset($_POST['borrow'])) {
-    $isbn = mysqli_real_escape_string($conn, $_POST['isbn']);
-    $borrowDate = date("Y-m-d H:i:s");
-    $returnDate = date("Y-m-d H:i:s", strtotime('+7 days'));
+    $isbns = $_POST['isbn']; // Array of selected books
+    $borrowDate = date("Y-m-d H:i:s"); // Current date and time
+    $returnDate = date("Y-m-d H:i:s", strtotime('+7 days')); // Return date after 7 days
 
-    $sql = "INSERT INTO borrowed_books (isbn, `BORROW DATE`, `RETURN DATE`) 
-            VALUES ('$isbn', '$borrowDate', '$returnDate')";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "<p>Book borrowed successfully. Return it by $returnDate.</p>";
-    } else {
-        echo "<p>Error: " . $conn->error . "</p>";
-    }
-}
+    // Loop through each selected book and insert into the borrowed_books table
+    foreach ($isbns as $isbn) {
+        $isbn = mysqli_real_escape_string($conn, $isbn);
 
-// Check if the form to update a book is submitted
-if (isset($_POST['update'])) {
-    $isbn = mysqli_real_escape_string($conn, $_POST['isbn']);
-    $borrowDate = mysqli_real_escape_string($conn, $_POST['borrow_date']);
-    $returnDate = mysqli_real_escape_string($conn, $_POST['return_date']);
-
-    $sql = "UPDATE borrowed_books SET `BORROW DATE` = '$borrowDate', `RETURN DATE` = '$returnDate' 
-            WHERE isbn = '$isbn'";
-    
-    echo "<p>SQL Query: $sql</p>"; // Debugging: Show the SQL query
-
-    if ($conn->query($sql) === TRUE) {
-        // Redirect to the same page to avoid resubmission
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
-    } else {
-        echo "<p>Error: " . $conn->error . "</p>";
+        // Insert book borrowing details into the borrowed_books table
+        $sql = "INSERT INTO borrowed_books (ISBN, `BORROW DATE`, `RETURN DATE`) 
+                VALUES ('$isbn', '$borrowDate', '$returnDate')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "<p>Book with ISBN $isbn borrowed successfully. Return it by $returnDate.</p>";
+        } else {
+            echo "<p>Error: " . $conn->error . "</p>";
+        }
     }
 }
 
@@ -51,14 +37,14 @@ $resultBooks = $conn->query($sqlBooks);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Borrowed Book</title>
+    <title>Borrow Books</title>
 </head>
 <body>
 
-<center><h2>Borrowed Book</h2></center>
+<center><h2>Borrow Books</h2></center>
 <form method="POST" action="">
-    <label for="isbn">Select a Book:</label>
-    <select name="isbn" id="isbn" required>
+    <label for="isbn">Select Books:</label>
+    <select name="isbn[]" id="isbn" multiple required>
         <?php
         if ($resultBooks->num_rows > 0) {
             while ($row = $resultBooks->fetch_assoc()) {
@@ -71,13 +57,7 @@ $resultBooks = $conn->query($sqlBooks);
     </select>
     <br><br>
 
-    <label for="borrow_date">Borrow Date:</label>
-    <input type="date" name="borrow_date" id="borrow_date" required><br><br>
-
-    <label for="return_date">Return Date:</label>
-    <input type="date" name="return_date" id="return_date" required><br><br>
-
-    <button type="submit" name="update">Update Book Details</button>
+    <button type="submit" name="borrow">Borrow Books</button>
 </form>
 
 </body>
