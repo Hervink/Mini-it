@@ -1,30 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
-</head>
-<body>
-<div class="login-container">
-   <center><h1>Login</h1></center> 
-    <form action="login.php" method="POST">
-        <label for="username">USERNAME</label>
-        <input type="text" id="username" name="username" required><br>
-
-        
-        <label for="student_id">STUDENT ID:</label>
-        <input type="text" id="student_id" name="student_id" maxlength="15" required> <br>
-
-        <label for="password">PASSWORD</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <input type="submit" value="Login">
-    </form>
-</div>
-</body>
-</html>
-
 <?php
 session_start();
 include 'connection.php';
@@ -44,16 +17,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if ($user['PASSWORD'] === $password) {
             $_SESSION['user_id'] = $user['ID'];
-            echo "Login successful! Welcome, " . $user['NAME'];
             header("Location: dashboard.php");
             exit();
         } else {
-            echo "Invalid password.";
+            $error_message = "Invalid password.";
         }
     } else {
-        echo "Invalid username or student ID.";
+        $error_message = "Invalid username or student ID.";
     }
 
     mysqli_close($conn);
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+</head>
+<body>
+<div class="login-container">
+   <center><h1>Login</h1></center> 
+    <form action="" method="POST">
+        <label for="username">USERNAME</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="student_id">STUDENT ID:</label>
+        <input type="text" id="student_id" name="student_id" maxlength="15" required><br>
+
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+    <?php if (isset($error_message)): ?>
+        <p style="color: red;"><?php echo $error_message; ?></p>
+    <?php endif; ?>
+</div>
+</body>
+</html>
