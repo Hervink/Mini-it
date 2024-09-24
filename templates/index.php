@@ -12,7 +12,13 @@ ini_set('display_errors', 1);
     <title>MINI IT</title>
 </head>
 <body>
-
+<style>
+    body{
+        .menu {
+        padding: 10px;
+        text-align: center;
+    }
+    </style>
 <div class="menu">
     <?php if (isset($_SESSION['student id'])): ?>
         <a href="book.php">SEARCH BOOK</a>
@@ -23,7 +29,6 @@ ini_set('display_errors', 1);
         <a href="login.php" class="right">LOGIN</a>
         <a href="registration.php" class="right">REGISTER</a>
     <?php endif; ?>
-    <a href="admin_login.php">ADMIN LOGIN</a>
     <a href="about.php">ABOUT</a>
     <a href="contact_us.php">CONTACT</a>
 </div>
