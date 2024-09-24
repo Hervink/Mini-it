@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Name and message are required.";
     } else {
         // Insert contact information into the database
-        $sql = "INSERT INTO contacts (name, email, message) VALUES ('$name', '$email', '$message')";
+        $sql = "INSERT INTO contact_us (name, email, message) VALUES ('$name', '$email', '$message')";
         
         if ($conn->query($sql) === TRUE) {
             echo "<p>Thank you for contacting us! We will get back to you shortly.</p>";
@@ -37,15 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-  
 </head>
 <body>
 
 <h2>Contact Us</h2>
 <form method="POST" action="">
-
-<label for="id">STUDENT ID:</label><br>
-<input type="id" name="id" id="id" required><br><br>
+    <label for="id">STUDENT ID:</label><br>
+    <input type="id" name="id" id="id" required><br><br>
 
     <label for="name">Name:</label><br>
     <input type="text" name="name" id="name" required><br><br>

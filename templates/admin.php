@@ -13,8 +13,8 @@ ini_set('display_errors', 1);
 </head>
 <body>
 <div class="menu">
-    <a href="manage_books.php">MANAGE BOOKS</a>
-    <a href="manage_students.php">MANAGE STUDENTS</a>
+    <a href="manage_book.php">MANAGE BOOKS</a>
+    <a href="manage_student.php">MANAGE STUDENTS</a>
     <a href="borrow_requests.php">BORROW REQUESTS</a>
     <a href="return_requests.php">RETURN REQUESTS</a>
   
