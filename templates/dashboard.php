@@ -15,7 +15,7 @@ session_start();
         <a href="book.php">SEARCH BOOK</a>
         <a href="borrowed_book.php">BORROW BOOK</a>
         <a href="return_book.php">RETURN BOOK</a>
-        <a href="logout.php" class="right">LOGOUT</a>
+       
     </div>
 </body>
 </html>
