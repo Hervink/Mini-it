@@ -10,7 +10,7 @@ session_start();
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome to Your Dashboard</h1>
+    <h1>STUDENT DASHBOARD</h1>
     <div class="menu">
         <a href="book.php">SEARCH BOOK</a>
         <a href="borrowed_book.php">BORROW BOOK</a>
