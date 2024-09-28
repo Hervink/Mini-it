@@ -1,13 +1,13 @@
 <?php
-include 'connection.php'; // Include database connection file
+include '../connection.php';
 
 // Enable error reporting
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL);
 
-// Check if the form to borrow books is submitted
+
 if (isset($_POST['borrow'])) {
-    $isbns = $_POST['isbn']; // Array of selected books
+    $isbns = $_POST['isbn']; 
     $borrowDate = date("Y-m-d H:i:s"); // Current date and time
     $returnDate = date("Y-m-d H:i:s", strtotime('+7 days')); // Return date after 7 days
 
@@ -15,7 +15,7 @@ if (isset($_POST['borrow'])) {
     foreach ($isbns as $isbn) {
         $isbn = mysqli_real_escape_string($conn, $isbn);
 
-        // Insert book borrowing details into the borrowed_books table
+     
         $sql = "INSERT INTO borrowed_books (ISBN, `BORROW DATE`, `RETURN DATE`) 
                 VALUES ('$isbn', '$borrowDate', '$returnDate')";
         

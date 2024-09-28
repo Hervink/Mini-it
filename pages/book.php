@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include '../connection.php';
 
 // Default SQL query to fetch all books
 $sql = "SELECT * FROM books";
