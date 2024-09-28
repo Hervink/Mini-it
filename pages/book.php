@@ -22,27 +22,138 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEARCH BOOKS</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        img {
-            width: 100px;
-            height: auto;
-        }
-    </style>
+  
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient background */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+h2 {
+    color: #ff6b6b; /* Soft red color */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+h3 {
+    color: #4ecdc4; /* Teal color */
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4ecdc4; /* Teal border */
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #ff6b6b; /* Change border to soft red on focus */
+    outline: none;
+}
+
+.btn {
+    background-color: #ff6b6b; /* Soft red button */
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #ff3d3d; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #4ecdc4; /* Teal border */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #feb47b; /* Light orange */
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f7f7f7; /* Light gray */
+    transition: background-color 0.3s;
+}
+
+td img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+tr:hover td {
+    background-color: #ffefdb; /* Light peach on row hover */
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+</style>
 </head>
 <body>
 

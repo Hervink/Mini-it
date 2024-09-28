@@ -40,7 +40,9 @@ $resultBooks = $conn->query($sqlBooks);
     <title>Borrow Books</title>
 </head>
 <body>
-
+<style>
+    
+</style>
 <center><h2>Borrow Books</h2></center>
 <form method="POST" action="">
     <label for="isbn">Select Books:</label>
