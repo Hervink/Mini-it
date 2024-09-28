@@ -1,20 +1,15 @@
 <?php
-include 'connection.php'; // Include database connection file
-
-// Enable error reporting
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL);
+include '../connection.php';
 
-// Check if the form to return books is submitted
 if (isset($_POST['return'])) {
-    $isbns = $_POST['isbn']; // Array of selected books to return
+    $isbns = $_POST['isbn'];
 
     foreach ($isbns as $isbn) {
         $isbn = mysqli_real_escape_string($conn, $isbn);
-
-        // Remove the returned book from the borrowed_books table
         $sql = "DELETE FROM borrowed_books WHERE ISBN = '$isbn'";
-        
+
         if ($conn->query($sql) === TRUE) {
             echo "<p>Book with ISBN $isbn returned successfully.</p>";
         } else {
@@ -22,12 +17,10 @@ if (isset($_POST['return'])) {
         }
     }
 
-    // Refresh the page to avoid form resubmission
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
 
-// Check the columns in the borrowed_books table
 $columns = $conn->query("SHOW COLUMNS FROM borrowed_books");
 $hasBorrowDate = false;
 $hasReturnDate = false;
@@ -41,7 +34,6 @@ while ($column = $columns->fetch_assoc()) {
     }
 }
 
-// Fetch all borrowed books
 $sqlBorrowedBooks = "SELECT borrowed_books.ISBN, books.TITLE, books.AUTHOR_NAME" . 
                      ($hasBorrowDate ? ", borrowed_books.BORROW_DATE" : "") . 
                      ($hasReturnDate ? ", borrowed_books.RETURN_DATE" : "") . 

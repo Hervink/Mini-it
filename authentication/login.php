@@ -1,34 +1,46 @@
 <?php
 session_start();
-include '../connection.php';
+include '../connection.php'; // Include your database connection file
 
+// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Establish connection to the database
     $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
 
+    // Retrieve and sanitize input values
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
+    // Query to find user in the database
     $query = "SELECT * FROM `student_registration` WHERE `USERNAME` = '$username' AND `STUDENT ID` = '$student_id'";
     $result = mysqli_query($conn, $query);
 
+    // Check if user exists
     if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
+        // Verify password
         if ($user['PASSWORD'] === $password) {
+            // Set session for the logged-in user
             $_SESSION['user_id'] = $user['ID'];
-            header("Location: dashboard.php");
+            // Redirect to the correct dashboard page
+            header("Location: /Mini-it/pages/dashboard.php"); // Absolute path to dashboard.php
             exit();
         } else {
+            // Display error if password is incorrect
             $error_message = "Invalid password.";
         }
     } else {
+        // Display error if username or student ID is invalid
         $error_message = "Invalid username or student ID.";
     }
 
+    // Close the database connection
     mysqli_close($conn);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         border-color: rgb(221, 83, 49);
         border-radius: 1.5vw;
         padding: 1.5vw;
-        padding-right: 3vw;
+        padding-right: 2vw;
         width: 29vw;
         text-align: center;
     }
@@ -165,36 +177,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <div class="image">
-        <p> </p>
-    </div>    
     <div class="container">
         <div class="header">
             <h1>Log In</h1>
         </div>
-        
-
         <div class="form-container">
             <form action="" method="POST">
                 <label for="username">USERNAME</label>
-                <input type="text" id="email" name="username" required><br>
+                <input type="text" id="username" name="username" required><br>
 
                 <label for="student_id">STUDENT ID:</label>
-                <input type="text" id="email" name="student_id" maxlength="15" required><br>
+                <input type="text" id="student_id" name="student_id" maxlength="15" required><br>
 
                 <label for="password">PASSWORD</label>
                 <input type="password" id="password" name="password" required><br>
 
                 <input type="submit" value="Login">
             </form>
+
+            <!-- Display error message if set -->
             <?php if (isset($error_message)): ?>
-                <p style="color: red;"><?php echo $error_message; ?></p>
+                <p><?php echo $error_message; ?></p>
             <?php endif; ?>
         </div>
 
         <div class="register">
             <p>Don't have an account? <a href="registration.php">Register</a></p>
         </div>
-        </div>
+    </div>
 </body>
 </html>
