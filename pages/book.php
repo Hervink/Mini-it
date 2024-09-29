@@ -185,13 +185,12 @@ tr:hover td {
             // Display each row
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
+                echo "<td><img src='../templates/" . $row['COVER'] . "' alt='Book Cover' width='100' height='150'></td>";
                 echo "<td>" . $row['ISBN'] . "</td>";
                 echo "<td>" . $row['TITLE'] . "</td>";
                 echo "<td>" . $row['AUTHOR_NAME'] . "</td>";
                 echo "<td>" . $row['DESCRIPTION'] . "</td>";
                 echo "<td>" . $row['FACULTY'] . "</td>";
-                // Display book cover image from the 'images' folder
-                echo "<td><img src='images/" . $row['COVER'] . "' alt='" . $row['TITLE'] . " Cover'></td>";
                 echo "</tr>";
             }
         } else {

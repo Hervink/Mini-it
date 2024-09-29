@@ -26,7 +26,7 @@
             width: 40vw;
             text-align: center;
             color: white;
-            margin-left: 10vw; /* Shift the container to the right */
+            margin-left: 55vw; /* Shift the container to the right */
         }
         h1 {
             font-size: 3vw;

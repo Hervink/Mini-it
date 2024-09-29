@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         padding-right: 2vw;
         width: 29vw;
         text-align: center;
+        margin-left: 55vw;
     }
     .header {
         margin-bottom: 1.5vw;
