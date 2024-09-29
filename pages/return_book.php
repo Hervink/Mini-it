@@ -154,7 +154,7 @@ if ($resultBorrowedBooks->num_rows > 0) {
     </form>
 <?php
 } else {
-    echo "<p>You have no borrowed books.</p>";
+    echo "<p>You have Returned books.</p>";
 }
 ?>
 
