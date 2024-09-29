@@ -151,6 +151,7 @@ if ($resultBorrowedBooks->num_rows > 0) {
         <br><br>
 
         <button type="submit" name="return">Return Books</button>
+        <a href="dashboard.php"><button type="button"><img src="../templates/pngegg.png" alt="" style="width: 1.15vw; height: 1.15vw;"></button></a>
     </form>
 <?php
 } else {

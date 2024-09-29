@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $isbn = mysqli_real_escape_string($conn, $isbn);
 
             // Prepare the insert query
-            $query = "INSERT INTO `borrowed_books` (`ISBN`, `borrow_date`, `return_date`) 
+            $query = "INSERT INTO `borrowed_books` (`ISBN`, `BORROW DATE`, `RETURN DATE`) 
                       VALUES ('$isbn', '$borrowDate', '$returnDate')";
 
             // Log the SQL query for debugging
@@ -143,9 +143,9 @@ $conn->close();
 
     <label for="return_date">Return Date:</label>
     <input type="date" name="return_date" id="return_date" required>
-
     <button type="submit" name="borrow">Borrow Books</button>
-</form>
+    <a href="dashboard.php"><button type="button"><img src="../templates/pngegg.png" alt="" style="width: 1.15vw; height: 1.15vw;"></button></a>
+    </form>
 
 </body>
 </html>

@@ -165,18 +165,19 @@ tr:hover td {
             <input type="text" class="form-control" id="search" name="search" placeholder="Enter book title, author, or faculty" value="<?php echo htmlspecialchars($search ?? ''); ?>">
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Search</button>
+        <a href="dashboard.php"><button type="button" style="background-color:#ff6b6b;"><img src="../templates/pngegg.png" alt="" style="width: 1.15vw; height: 1.15vw;"></button></a>
     </form>
 
     <h3 class="mt-5">Search Results</h3>
 
     <table>
         <tr>
+            <th>Cover</th>
             <th>ISBN</th>
             <th>Title</th>
             <th>Author</th>
             <th>Description</th>
             <th>Faculty</th>
-            <th>Cover</th>
         </tr>
         
         <?php
