@@ -193,11 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="submit" value="Login">
             </form>
 
-            <!-- Display error message if set -->
-            <?php if (isset($error_message)): ?>
-                <p><?php echo $error_message; ?></p>
-            <?php endif; ?>
-        </div>
+         
 
         <div class="register">
             <p>Don't have an account? <a href="registration.php">Register</a></p>
