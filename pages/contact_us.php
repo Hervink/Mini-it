@@ -107,8 +107,7 @@ include '../connection.php';
         </div>
         <div class="form-container">
         <?php 
-            $name = $email = $message = "";
-            $error = "";
+          
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $name = mysqli_real_escape_string($conn, $_POST['name']);
