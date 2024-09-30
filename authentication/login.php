@@ -2,33 +2,30 @@
 session_start();
 include '../connection.php'; 
 
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Establish connection to the database
+    
     $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
 
-    // Retrieve and sanitize input values
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    // Query to find user in the database
+    
     $query = "SELECT * FROM `student_registration` WHERE `USERNAME` = '$username' AND `STUDENT ID` = '$student_id'";
     $result = mysqli_query($conn, $query);
 
-    // Check if user exists
     if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
-        // Verify password
+       
         if ($user['PASSWORD'] === $password) {
-            // Set session for the logged-in user
+            
             $_SESSION['user_id'] = $user['ID'];
-            // Redirect to the correct dashboard page
-            header("Location: /Mini-it/pages/dashboard.php"); // Absolute path to dashboard.php
+            
+            header("Location: /Mini-it/pages/dashboard.php"); 
             exit();
         } else {
-            // Display error if password is incorrect
+            
             $error_message = "Invalid password.";
         }
     } else {
