@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
-    <link rel="website icon" type="png" href="http://localhost/GRP_Assignment/Webpage_items/quiz_icon.png">
     <link rel="stylesheet" href="../styles.css">
     <style>
     body {
@@ -181,7 +180,7 @@
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection
+    
     $link = mysqli_connect("localhost", "root", "", "library_management");
 
     if (!$link) {
@@ -198,7 +197,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = mysqli_real_escape_string($link, $_POST['gender']);
     $password = mysqli_real_escape_string($link, $_POST['password']);
 
-    // Insert query
+    
     $query = "INSERT INTO `student_registration`(`NAME`, `USERNAME`, `STUDENT ID`, `EMAIL`, `FACULTY`, `GENDER`, `PASSWORD`)
               VALUES ('$student_id', '$name', '$username', '$email', '$faculty', '$gender', '$password')";
 

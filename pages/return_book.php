@@ -1,6 +1,4 @@
 <?php
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-error_reporting(E_ALL);
 include '../connection.php';
 
 if (isset($_POST['return'])) {

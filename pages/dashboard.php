@@ -10,7 +10,6 @@ session_start();
     <title>Dashboard</title>
 </head>
 <body>
-<link rel="website icon" type="png" href="http://localhost/GRP_Assignment/Webpage_items/quiz_icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../styles.css">
     
@@ -66,7 +65,7 @@ session_start();
 
     .container {
         background: rgb(27,27,27);
- 
+    }
 
 </style>
     

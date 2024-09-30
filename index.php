@@ -1,7 +1,5 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +12,6 @@ ini_set('display_errors', 1);
 
 </head>
 <body>
-<link rel="website icon" type="png" href="http://localhost/GRP_Assignment/Webpage_items/quiz_icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../styles.css">
     <style>
@@ -74,20 +71,12 @@ ini_set('display_errors', 1);
 
 </style>
 <div class="menu">
-    <?php if (isset($_SESSION['student id'])): ?>
-        <a href="pages/book.php">SEARCH BOOK</a>
-        <a href="pages/borrowed_book.php">BORROW BOOK</a>
-        <a href="pages/return_book.php">RETURN BOOK</a>
-        <a href="pages/logout.php" class="right">LOGOUT</a>
-    <?php else: ?>
+ 
         <a href="authentication/login.php" class="right">LOGIN</a>
         <a href="authentication/registration.php" class="right">REGISTER</a>
-    <?php endif; ?>
-    <a href="pages/about.php">ABOUT</a>
-    <a href="pages/contact_us.php">CONTACT</a>
+         <a href="pages/about.php">ABOUT</a>
+         <a href="pages/contact_us.php">CONTACT</a>
 </div>
-
-
 <div class="welcome-message">
     <h1>WELCOME TO ONLINE LIBRARY MANAGEMENT</h1>
 </div>

@@ -1,22 +1,22 @@
 <?php
 include '../connection.php';
 
-// Default SQL query to fetch all books
+
 $sql = "SELECT * FROM books";
 
-// Check if the form is submitted
+
 if (isset($_POST['submit'])) {
-    // Get the search input and prevent SQL injection
+   
     $search = mysqli_real_escape_string($conn, $_POST['search']);
     
-    // Modify the SQL query to search by title, author, or faculty
+    
     $sql = "SELECT * FROM books 
             WHERE TITLE LIKE '%$search%' 
             OR AUTHOR_NAME LIKE '%$search%' 
             OR FACULTY LIKE '%$search%'";
 }
 
-// Execute the query
+
 $result = $conn->query($sql);
 ?>
 
@@ -30,7 +30,7 @@ $result = $conn->query($sql);
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient background */
+    background: linear-gradient(to right, #ff7e5f, #feb47b); 
     margin: 0;
     padding: 20px;
     color: #333;
@@ -198,7 +198,7 @@ tr:hover td {
             echo "<tr><td colspan='6'>No books found</td></tr>";
         }
 
-        // Close the database connection
+     
         $conn->close();
         ?>
     </table>

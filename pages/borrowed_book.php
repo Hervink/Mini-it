@@ -1,48 +1,44 @@
 <?php
-// Enable error reporting
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-error_reporting(E_ALL);
 session_start();
-include '../connection.php'; // Ensure the path to connection.php is correct
+include '../connection.php'; 
 
-$message = ""; // Initialize message variable
+$message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve data from the form
-    $isbns = $_POST['isbn']; // Array of selected books (ISBNs)
+    
+    $isbns = $_POST['isbn']; 
     $borrowDate = mysqli_real_escape_string($conn, $_POST['borrow_date']);
     $returnDate = mysqli_real_escape_string($conn, $_POST['return_date']);
 
-    // Validate date input
     if (strtotime($borrowDate) > strtotime($returnDate)) {
         $message = "Return date must be after the borrow date.";
     } else {
-        // Insert query to borrow books
+    
         foreach ($isbns as $isbn) {
             $isbn = mysqli_real_escape_string($conn, $isbn);
 
-            // Prepare the insert query
+            
             $query = "INSERT INTO `borrowed_books` (`ISBN`, `BORROW DATE`, `RETURN DATE`) 
                       VALUES ('$isbn', '$borrowDate', '$returnDate')";
 
-            // Log the SQL query for debugging
+        
             error_log("SQL Query: $query");
 
             if (mysqli_query($conn, $query)) {
                 $message = "Books borrowed successfully!";
             } else {
                 $message = "Error: " . mysqli_error($conn);
-                break; // Exit the loop on error to prevent multiple messages
+                break; 
             }
         }
     }
 }
 
-// Fetch all available books that haven't been borrowed yet
+
 $sqlBooks = "SELECT ISBN, TITLE, AUTHOR_NAME FROM books WHERE ISBN NOT IN (SELECT ISBN FROM borrowed_books)";
 $resultBooks = $conn->query($sqlBooks);
 
-// Close the connection after fetching books
+
 $conn->close();
 ?>
 
