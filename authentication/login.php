@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error_message = "Invalid password.";
         }
     } else {
-        // Display error if username or student ID is invalid
+        
         $error_message = "Invalid username or student ID.";
     }
 
