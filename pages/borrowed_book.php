@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 $sqlBooks = "SELECT ISBN, TITLE, AUTHOR_NAME FROM books WHERE ISBN NOT IN (SELECT ISBN FROM borrowed_books)";
-$resultBooks = $conn->query($sqlBooks);
+$resultBooks = $conn->query($sqlBooks); //execute the query
 
 
 $conn->close();

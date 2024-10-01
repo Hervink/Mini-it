@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'edit_profile.html';
     });
 });
-
+//this file is addded just to tryanimation but did not implement any
 function fetchUserData() {
     fetch('get_user_data.php')
         .then(response => response.json())

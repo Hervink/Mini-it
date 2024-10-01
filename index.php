@@ -67,7 +67,7 @@ session_start();
 
     .container {
         background: rgb(27,27,27);
- 
+    }
 
 </style>
 <div class="menu">

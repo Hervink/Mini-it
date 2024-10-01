@@ -2,22 +2,22 @@
 include '../connection.php';
 
 
-$sql = "SELECT * FROM books";
+$sql = "SELECT * FROM books"; //query TO SELECT ALL BOOKS
+ 
 
-
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) { //FIRST TIME $_POST = NULL;
    
-    $search = mysqli_real_escape_string($conn, $_POST['search']);
+    $search = mysqli_real_escape_string($conn, $_POST['search']); 
     
     
     $sql = "SELECT * FROM books 
             WHERE TITLE LIKE '%$search%' 
             OR AUTHOR_NAME LIKE '%$search%' 
-            OR FACULTY LIKE '%$search%'";
+            OR FACULTY LIKE '%$search%'"; //select the searched book //nwneonwoeFOE FOE FOEoiojoij
 }
+//$sql = data of all books;
 
-
-$result = $conn->query($sql);
+$result = $conn->query($sql); //execute the query
 ?>
 
 <!DOCTYPE html>
